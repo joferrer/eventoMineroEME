@@ -1,11 +1,185 @@
 ---
-
+const target = "2025-12-31T23:59:59";
 ---
-<div>
-    <h1>Contador</h1>
-    <p>Este es un componente de contador.</p>
-</div>
 
-<script>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Cuenta regresiva</title>
+    <style>
+      body {
+        background: linear-gradient(135deg, #0b4f8a, #0f66b3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        font-family: sans-serif;
+        margin: 0;
+      }
 
-</script>
+      .countdown {
+        text-align: center;
+        color: white;
+      }
+
+      .time {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 1rem;
+      }
+
+      .box {
+        background: rgba(255, 255, 255, 0.12);
+        padding: 1rem 1.5rem;
+        border-radius: 0.75rem;
+        min-width: 70px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease;
+      }
+
+      .box:hover {
+        transform: scale(1.05);
+      }
+
+      .number {
+        font-weight: bold;
+        animation: fadeIn 0.6s ease;
+      }
+
+      .label {
+        color: #ddd;
+        margin-top: 0.3rem;
+        letter-spacing: 1px;
+      }
+
+      /* Breakpoints */
+      @media (max-width: 600px) {
+        .time {
+          gap: 0.6rem;
+        }
+        .box {
+          padding: 0.6rem 1rem;
+          min-width: 55px;
+        }
+        .number {
+          font-size: 1.2rem;
+        }
+        .label {
+          font-size: 0.65rem;
+        }
+      }
+
+      @media (min-width: 601px) and (max-width: 1024px) {
+        .number {
+          font-size: 1.8rem;
+        }
+        .label {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (min-width: 1025px) {
+        .number {
+          font-size: 2.4rem;
+        }
+        .label {
+          font-size: 0.85rem;
+        }
+      }
+
+      /* Animaciones */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .pulse {
+        animation: pulse 0.3s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="countdown">
+      <h2>⏳ Cuenta regresiva</h2>
+      <div class="time">
+        <div class="box">
+          <div id="days" class="number">0</div>
+          <div class="label">Días</div>
+        </div>
+        <div class="box">
+          <div id="hours" class="number">0</div>
+          <div class="label">Horas</div>
+        </div>
+        <div class="box">
+          <div id="minutes" class="number">0</div>
+          <div class="label">Minutos</div>
+        </div>
+        <div class="box">
+          <div id="seconds" class="number">0</div>
+          <div class="label">Segundos</div>
+        </div>
+      </div>
+    </div>
+
+    <script define:vars={{ target }}>
+      const targetDate = new Date(target).getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          document.querySelector(".countdown").innerHTML =
+            "<h2>🎉 ¡Llegó el día!</h2>";
+          clearInterval(interval);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        setNumber("days", days);
+        setNumber("hours", hours);
+        setNumber("minutes", minutes);
+        setNumber("seconds", seconds);
+      }
+
+      function setNumber(id, value) {
+        const el = document.getElementById(id);
+        if (el.textContent !== String(value)) {
+          el.textContent = value;
+          el.classList.remove("pulse");
+          void el.offsetWidth; // reset animación
+          el.classList.add("pulse");
+        }
+      }
+
+      updateCountdown();
+      const interval = setInterval(updateCountdown, 1000);
+    </script>
+  </body>
+</html>
