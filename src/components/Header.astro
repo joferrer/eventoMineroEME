@@ -1,0 +1,27 @@
+---
+import logoHorizontalDark from "../assets/icons/horizontales/LogoHorizontalDark.png";
+import logoHorizontalLight from "../assets/icons/horizontales/LogoHorizontalLight.png";
+---
+
+<header id="header" class="fixed top-0 left-0 w-full z-50 transition-colors duration-500 bg-transparent flex justify-between">
+    <img
+        src={logoHorizontalDark.src}
+        alt=" Logo del evento minero EME 2025"
+        class="w-1/2 ml-3 my-4"
+    />
+    <a href="">MENU</a>
+</header>
+
+<script>
+  const header = document.getElementById("header") as HTMLElement;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 100) {
+      header.classList.remove("bg-transparent");
+      header.classList.add("bg-white/90", "backdrop-blur-md", "shadow-md");
+    } else {
+      header.classList.add("bg-transparent");
+      header.classList.remove("bg-white/90", "backdrop-blur-md", "shadow-md");
+    }
+  });
+</script>
