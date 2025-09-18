@@ -13,16 +13,6 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
 ---
 
     <style>
-      body {
-        background: linear-gradient(135deg, #0b4f8a, #0f66b3);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        font-family: sans-serif;
-        margin: 0;
-      }
-
       .countdown {
         text-align: center;
         color: white;
@@ -212,7 +202,7 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
       <div class="target-date">📅 Fecha objetivo: {targetFormatted}</div>
     </div>
   </div>
-  
+
     <script define:vars={{ target }}>
       const targetDate = new Date(target).getTime();
 
