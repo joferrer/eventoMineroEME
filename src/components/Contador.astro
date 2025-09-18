@@ -12,10 +12,6 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
 });
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <title>Cuenta regresiva</title>
     <style>
       body {
         background: linear-gradient(135deg, #0b4f8a, #0f66b3);
@@ -188,8 +184,8 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
         animation: pulse 0.3s ease;
       }
     </style>
-  </head>
-  <body>
+  
+  <div>
     <div class="countdown">
       <h2 class="title">
         ¡La cuenta atrás para <span>EventoEME</span> ha empezado!
@@ -215,7 +211,8 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
       </div>
       <div class="target-date">📅 Fecha objetivo: {targetFormatted}</div>
     </div>
-
+  </div>
+  
     <script define:vars={{ target }}>
       const targetDate = new Date(target).getTime();
 
@@ -256,5 +253,4 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
       updateCountdown();
       const interval = setInterval(updateCountdown, 1000);
     </script>
-  </body>
-</html>
+  
