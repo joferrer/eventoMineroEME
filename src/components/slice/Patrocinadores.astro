@@ -1,1 +1,93 @@
-<div></div>
+---
+import { Image } from "astro:assets";
+import LogoVerticalDark from "../../assets/icons/verticales/LogoVerticalDark.png";
+
+const logos = Array(6).fill(LogoVerticalDark);
+---
+
+<section class="patrocinadores">
+  <h2>Patrocinadores</h2>
+  <p>El Evento EME puede llevarse a cabo gracias a la colaboración de…</p>
+
+  <div class="grid">
+    {
+      logos.map((logo, index) => (
+        <div class="card">
+          <Image
+            src={logo}
+            alt={`Patrocinador ${index + 1}`}
+            width={80}
+            height={80}
+            fit="contain"
+            loading="lazy"
+          />
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .patrocinadores {
+    padding: 3rem 1rem;
+    text-align: center;
+    background: #0f0f1a;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .patrocinadores h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid white;
+    display: inline-block;
+    padding-bottom: 0.25rem;
+  }
+
+  .patrocinadores p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .card {
+    background: #1a1a2e;
+    padding: 1rem;
+    border-radius: 12px;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+      transform 0.3s,
+      box-shadow 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
