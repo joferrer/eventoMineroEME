@@ -12,235 +12,225 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
 });
 ---
 
-    <style>
-      .countdown {
-        text-align: center;
-        color: white;
-      }
+<style>
+  .countdown {
+    text-align: center;
+    color: white;
+  }
 
-      .time {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 1rem;
-      }
+  .time {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+  }
 
-      .box {
-        background: rgba(255, 255, 255, 0.12);
-        padding: 1rem 1.5rem;
-        border-radius: 0.75rem;
-        min-width: 70px;
-        box-shadow:
-          0 3px 11px rgba(255, 255, 255, 0.3),
-          0 0 9px rgba(12, 102, 179, 0.3);
-        transition: transform 0.2s ease;
-      }
+  .box {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 0.75rem;
+    width: 120px; /* ancho fijo */
+    height: 120px; /* alto fijo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease;
+    animation: shadowPulse 3s infinite ease-in-out;
+    text-align: center;
+    white-space: nowrap;
+    animation: shadowPulse 3s infinite ease-in-out;
+  }
 
-      .box:hover {
-        transform: scale(1.05);
-        cursor: pointer;
-      }
+  .number {
+    font-weight: bold;
+    font-size: 2rem;
+    line-height: 1;
+    animation: fadeIn 0.6s ease;
+  }
 
-      .number {
-        font-weight: bold;
-        animation: fadeIn 0.6s ease;
-      }
+  .label {
+    font-size: 1rem;
+    color: #ddd;
+    margin-top: 0.3rem;
+    letter-spacing: 1px;
+  }
 
-      .label {
-        color: #ddd;
-        margin-top: 0.3rem;
-        letter-spacing: 1px;
-      }
+  .target-date {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: #eee;
+    opacity: 0.9;
+  }
 
-      /* Fecha objetivo */
-      .target-date {
-        margin-top: 1.5rem;
-        font-size: 0.9rem;
-        color: #eee;
-        opacity: 0.9;
-      }
+  .box:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 
-      @media (max-width: 600px) {
-        .time {
-          gap: 0.6rem;
-        }
-        .box {
-          padding: 0.6rem 1rem;
-          min-width: 55px;
-        }
-        .number {
-          font-size: 1.2rem;
-        }
-        .label {
-          font-size: 0.65rem;
-        }
-        .target-date {
-          font-size: 0.75rem;
-        }
-      }
+  @keyframes shadowPulse {
+    0% {
+      box-shadow:
+        0 3px 12px rgba(255, 255, 255, 0.3),
+        /* blanco brillante */ 0 0 10px rgba(13, 110, 255, 0.6),
+        /* azul eléctrico */ 0 0 6px rgba(255, 247, 95, 0.4); /* amarillo neón */
+    }
+    25% {
+      box-shadow:
+        0 3px 14px rgba(255, 255, 255, 0.35),
+        0 0 12px rgba(28, 239, 255, 0.6),
+        /* cyan neón */ 0 0 7px rgba(255, 247, 95, 0.45);
+    }
+    50% {
+      box-shadow:
+        0 3px 16px rgba(255, 255, 255, 0.4),
+        0 0 16px rgba(13, 110, 255, 0.7),
+        0 0 9px rgba(28, 239, 255, 0.5);
+    }
+    75% {
+      box-shadow:
+        0 3px 14px rgba(255, 255, 255, 0.35),
+        0 0 12px rgba(28, 239, 255, 0.6),
+        0 0 7px rgba(255, 247, 95, 0.45);
+    }
+    100% {
+      box-shadow:
+        0 3px 12px rgba(255, 255, 255, 0.3),
+        0 0 10px rgba(13, 110, 255, 0.6),
+        0 0 6px rgba(255, 247, 95, 0.4);
+    }
+  }
 
-      @media (min-width: 601px) and (max-width: 1024px) {
-        .number {
-          font-size: 1.8rem;
-        }
-        .label {
-          font-size: 0.75rem;
-        }
-        .target-date {
-          font-size: 0.85rem;
-        }
-      }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-      @media (min-width: 1025px) {
-        .number {
-          font-size: 2.4rem;
-        }
-        .label {
-          font-size: 0.85rem;
-        }
-        .target-date {
-          font-size: 1rem;
-        }
-      }
-      .title {
-        font-size: 1.8rem;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 1.2rem;
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 
-        /* Gradiente animado pero más suave */
-        background: linear-gradient(
-          90deg,
-          #ffb400,
-          #ff6a00,
-          #ff0066,
-          #7a00ff,
-          #00c3ff
-        );
-        background-size: 300% 300%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+  .pulse {
+    animation: pulse 0.3s ease;
+  }
 
-        animation: gradientMove 8s ease-in-out infinite;
-      }
+  /* Media Queries para responsividad */
+  @media (max-width: 600px) {
+    .box {
+      width: 90px;
+      height: 90px;
+      padding: 0.6rem;
+    }
+    .number {
+      font-size: 1.5rem;
+    }
+    .label {
+      font-size: 0.85rem;
+    }
+  }
 
-      .title span {
-        font-weight: 900;
-        color: #ffdf80; /* un dorado suave */
-        text-shadow:
-          0 0 6px rgba(255, 200, 50, 0.6),
-          0 0 12px rgba(255, 150, 0, 0.5);
-      }
+  @media (min-width: 601px) and (max-width: 1024px) {
+    .box {
+      width: 100px;
+      height: 100px;
+    }
+    .number {
+      font-size: 1.8rem;
+    }
+    .label {
+      font-size: 0.9rem;
+    }
+  }
 
-      /* Animación más lenta y fluida */
-      @keyframes gradientMove {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
+  @media (min-width: 1025px) {
+    .box {
+      width: 120px;
+      height: 120px;
+    }
+    .number {
+      font-size: 2rem;
+    }
+    .label {
+      font-size: 1rem;
+    }
+  }
+</style>
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes pulse {
-        0% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
-        100% {
-          transform: scale(1);
-        }
-      }
-
-      .pulse {
-        animation: pulse 0.3s ease;
-      }
-    </style>
-  
-  <div>
-    <div class="countdown">
-      <h2 class="title">
-        ¡La cuenta atrás para <span>EventoEME</span> ha empezado!
-      </h2>
-
-      <div class="time">
-        <div class="box">
-          <div id="days" class="number">0</div>
-          <div class="label">Días</div>
-        </div>
-        <div class="box">
-          <div id="hours" class="number">0</div>
-          <div class="label">Horas</div>
-        </div>
-        <div class="box">
-          <div id="minutes" class="number">0</div>
-          <div class="label">Minutos</div>
-        </div>
-        <div class="box">
-          <div id="seconds" class="number">0</div>
-          <div class="label">Segundos</div>
-        </div>
+<div>
+  <div class="countdown">
+    <div class="time">
+      <div class="box">
+        <div id="days" class="number">0</div>
+        <div class="label">Días</div>
       </div>
-      <div class="target-date">📅 Fecha objetivo: {targetFormatted}</div>
+      <div class="box">
+        <div id="hours" class="number">0</div>
+        <div class="label">Horas</div>
+      </div>
+      <div class="box">
+        <div id="minutes" class="number">0</div>
+        <div class="label">Minutos</div>
+      </div>
+      <div class="box">
+        <div id="seconds" class="number">0</div>
+        <div class="label">Segundos</div>
+      </div>
     </div>
+    <div class="target-date">📅 Fecha objetivo: {targetFormatted}</div>
   </div>
+</div>
 
-    <script define:vars={{ target }}>
-      const targetDate = new Date(target).getTime();
+<script define:vars={{ target }}>
+  const targetDate = new Date(target).getTime();
 
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = targetDate - now;
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
 
-        if (distance <= 0) {
-          document.querySelector(".countdown").innerHTML =
-            "<h2>🎉 ¡Llegó el día!</h2>";
-          clearInterval(interval);
-          return;
-        }
+    if (distance <= 0) {
+      document.querySelector(".countdown").innerHTML =
+        "<h2>🎉 ¡Llegó el día!</h2>";
+      clearInterval(interval);
+      return;
+    }
 
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        setNumber("days", days);
-        setNumber("hours", hours);
-        setNumber("minutes", minutes);
-        setNumber("seconds", seconds);
-      }
+    setNumber("days", days);
+    setNumber("hours", hours);
+    setNumber("minutes", minutes);
+    setNumber("seconds", seconds);
+  }
 
-      function setNumber(id, value) {
-        const el = document.getElementById(id);
-        if (el.textContent !== String(value)) {
-          el.textContent = value;
-          el.classList.remove("pulse");
-          void el.offsetWidth;
-          el.classList.add("pulse");
-        }
-      }
+  function setNumber(id, value) {
+    const el = document.getElementById(id);
+    if (el.textContent !== String(value)) {
+      el.textContent = value;
+      el.classList.remove("pulse");
+      void el.offsetWidth;
+      el.classList.add("pulse");
+    }
+  }
 
-      updateCountdown();
-      const interval = setInterval(updateCountdown, 1000);
-    </script>
-  
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+</script>
