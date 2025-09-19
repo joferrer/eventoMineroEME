@@ -2,7 +2,7 @@
 id: steve-minero
 nombre: Steve
 description: Experto en minería con más de 20 años de experiencia en la industria, especializado en tecnologías sostenibles y gestión de proyectos mineros.
-foto: steve.jpg
+foto: steve.jpeg
 ---
 
 # Steve Minero

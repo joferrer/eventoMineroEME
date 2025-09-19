@@ -1,6 +1,8 @@
 import { defineCollection, z } from "astro:content";
+import { glob } from 'astro/loaders'; 
 
-const ponentesCollection = defineCollection({
+const ponentes = defineCollection({
+    loader:glob({base: './ponentes', pattern: '**/*.md'}),
     schema: z.object({
         id: z.string(),
         nombre: z.string(),
@@ -12,5 +14,5 @@ const ponentesCollection = defineCollection({
 })
 
 export const collections = {
-    ponentes: ponentesCollection,
+    ponentes
 }
