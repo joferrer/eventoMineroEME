@@ -1,7 +1,7 @@
 ---
-const target = "2025-12-28T20:00:00";
+const target = "2025-12-24T00:00:00";
 
-// Formato corto en español
+// Formato corto en español (para la meta)
 const targetDateObj = new Date(target);
 const targetFormatted = targetDateObj.toLocaleString("es-ES", {
   month: "long",
@@ -16,6 +16,13 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
   .countdown {
     text-align: center;
     color: white;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.6s ease-out;
+  }
+  .countdown.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
 
   .time {
@@ -29,17 +36,35 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
   .box {
     background: rgba(255, 255, 255, 0.17);
     border-radius: 0.75rem;
-    width: 120px; /* ancho fijo */
-    height: 120px; /* alto fijo */
+    width: 120px;
+    height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: transform 0.2s ease;
-    animation: shadowPulse 3s infinite ease-in-out;
+    animation: shadowPulse 5s infinite ease-in-out;
     text-align: center;
     white-space: nowrap;
-    animation: shadowPulse 5s infinite ease-in-out;
+  }
+  @media (max-width: 550px) {
+    .box {
+      width: 80px;
+      height: 80px;
+      margin: 0.5rem 0;
+    }
+  }
+  @media (max-width: 369px) {
+    .box {
+      width: 130px;
+      height: 130px;
+      margin: 0.1rem 0;
+    }
+    .time {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      justify-items: center;
+    }
   }
 
   .number {
@@ -56,8 +81,9 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
     letter-spacing: 1px;
   }
 
-  .target-date {
-    margin-top: 1.5rem;
+  .target-date,
+  .today-date {
+    margin-top: 1rem;
     font-size: 0.9rem;
     color: #eee;
     opacity: 0.9;
@@ -72,26 +98,14 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
     0% {
       box-shadow:
         0 3px 12px rgba(255, 255, 255, 0.3),
-        /* blanco brillante */ 0 0 10px rgba(13, 110, 255, 0.6),
-        /* azul eléctrico */ 0 0 6px rgba(255, 247, 95, 0.4); /* amarillo neón */
-    }
-    25% {
-      box-shadow:
-        0 3px 14px rgba(255, 255, 255, 0.35),
-        0 0 12px rgba(28, 239, 255, 0.6),
-        /* cyan neón */ 0 0 7px rgba(255, 247, 95, 0.45);
+        0 0 10px rgba(13, 110, 255, 0.6),
+        0 0 6px rgba(255, 247, 95, 0.4);
     }
     50% {
       box-shadow:
         0 3px 16px rgba(255, 255, 255, 0.4),
         0 0 16px rgba(13, 110, 255, 0.7),
         0 0 9px rgba(28, 239, 255, 0.5);
-    }
-    75% {
-      box-shadow:
-        0 3px 14px rgba(255, 255, 255, 0.35),
-        0 0 12px rgba(28, 239, 255, 0.6),
-        0 0 7px rgba(255, 247, 95, 0.45);
     }
     100% {
       box-shadow:
@@ -128,50 +142,29 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
     animation: pulse 0.3s ease;
   }
 
-  /* Media Queries para responsividad */
-  @media (max-width: 600px) {
-    .box {
-      width: 90px;
-      height: 90px;
-      padding: 0.6rem;
-    }
-    .number {
-      font-size: 1.5rem;
-    }
-    .label {
-      font-size: 0.85rem;
-    }
+  .final-bg {
+    background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a18cd1);
+    background-size: 400% 400%;
+    animation: bgGradient 10s ease infinite;
+    padding: 2rem;
+    border-radius: 1rem;
   }
 
-  @media (min-width: 601px) and (max-width: 1024px) {
-    .box {
-      width: 100px;
-      height: 100px;
+  @keyframes bgGradient {
+    0% {
+      background-position: 0% 50%;
     }
-    .number {
-      font-size: 1.8rem;
+    50% {
+      background-position: 100% 50%;
     }
-    .label {
-      font-size: 0.9rem;
-    }
-  }
-
-  @media (min-width: 1025px) {
-    .box {
-      width: 120px;
-      height: 120px;
-    }
-    .number {
-      font-size: 2rem;
-    }
-    .label {
-      font-size: 1rem;
+    100% {
+      background-position: 0% 50%;
     }
   }
 </style>
 
 <div>
-  <div class="countdown">
+  <div class="countdown" id="countdown">
     <div class="time">
       <div class="box">
         <div id="days" class="number">0</div>
@@ -190,20 +183,50 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
         <div class="label">Segundos</div>
       </div>
     </div>
-    <div class="target-date">📅 Fecha objetivo: {targetFormatted}</div>
+    <div class="target-date mb-6">🎯 Fecha objetivo: {targetFormatted}</div>
   </div>
 </div>
 
+<script
+  src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"
+></script>
+
 <script define:vars={{ target }}>
   const targetDate = new Date(target).getTime();
+
+  function launchConfetti() {
+    const duration = 2000;
+    const end = Date.now() + duration;
+
+    (function frame() {
+      confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 } });
+      confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 } });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    })();
+  }
 
   function updateCountdown() {
     const now = new Date().getTime();
     const distance = targetDate - now;
 
     if (distance <= 0) {
-      document.querySelector(".countdown").innerHTML =
-        "<h2>🎉 ¡Llegó el día!</h2>";
+      window.addEventListener("load", () => {
+        launchConfetti();
+      });
+      document.querySelector(".countdown").innerHTML = document.querySelector(
+        ".countdown"
+      ).innerHTML = `
+      <div class='final-bg mb-5'>
+        <p class='text-center text-4xl font-extrabold mt-2 mb-4'
+          style='animation: popIn 0.8s ease-out; font-size: 3rem;'>
+          <span class="emoji">🎉</span>
+          <span class="text-center text-4xl font-extrabold mt-2 mb-5 bg-gradient-to-r from-red-400 via-pink-500 to-red-500 bg-clip-text text-transparent" style="animation: popIn 0.8s ease-out; font-size: 3rem;">
+          ¡Llegó el Día!
+          </span>
+        </p>
+      </div>
+      `;
+      launchConfetti();
       clearInterval(interval);
       return;
     }
@@ -231,6 +254,38 @@ const targetFormatted = targetDateObj.toLocaleString("es-ES", {
     }
   }
 
+  // Intersection Observer para animar cuando aparece en pantalla
+  const countdownElement = document.getElementById("countdown");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          countdownElement.classList.add("visible");
+        } else {
+          countdownElement.classList.remove("visible");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+  observer.observe(countdownElement);
+
   updateCountdown();
   const interval = setInterval(updateCountdown, 1000);
 </script>
+
+<style>
+  @keyframes popIn {
+    0% {
+      transform: scale(0.5) rotate(-10deg);
+      opacity: 0;
+    }
+    60% {
+      transform: scale(1.2) rotate(5deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+  }
+</style>
