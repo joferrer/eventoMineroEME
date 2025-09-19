@@ -1,26 +1,22 @@
 ---
 const { title, subtitle } = Astro.props;
 ---
-<div>
-    <div class="flex items-center w-full max-w-3xl mx-auto">
-    <!-- Línea izquierda -->
-    <div class="line-left"></div>
 
-    <!-- Texto centrado -->
-    <h2 class="px-4 text-2xl font-bold title">{title}</h2>
+<div class="flex items-center w-full max-w-3xl mx-auto">
+  <!-- Línea izquierda -->
+  <div class="line-left"></div>
 
-    <!-- Línea derecha -->
-    <div class="line-right"></div>
-  </div>
+  <!-- Texto centrado -->
+  <h2 class="px-4 text-2xl font-bold title">{title}</h2>
 
-  <p class="subtitle">
-    {subtitle}
-  </p>
-
+  <!-- Línea derecha -->
+  <div class="line-right"></div>
 </div>
 
+{subtitle && <p class="subtitle">{subtitle}</p>}
+
 <style>
-    .title {
+  .title {
     font-size: 2rem;
     margin-bottom: 0.5rem;
     display: inline-block;
@@ -28,30 +24,19 @@ const { title, subtitle } = Astro.props;
     color: #1e293b;
     transition: color 0.3s ease;
   }
-
-  .dark-theme .title {
-    color: white;
-  }
-
   .subtitle {
     margin-bottom: 2rem;
     font-size: 1.1rem;
     color: #475569;
     transition: color 0.3s ease;
+    text-align: center;
   }
-
-  .dark-theme .subtitle {
-    color: #e2e8f0;
-  }
-
-  /* Líneas decorativas */
   .line-left {
     flex: 1;
     height: 1px;
     background: linear-gradient(to right, transparent, #64748b);
     transition: background 0.3s ease;
   }
-
   .line-right {
     flex: 1;
     height: 1px;
@@ -59,12 +44,19 @@ const { title, subtitle } = Astro.props;
     transition: background 0.3s ease;
   }
 
-  .dark-theme .line-left {
-    background: linear-gradient(to right, transparent, white);
-  }
+  @media (prefers-color-scheme: dark) {
+    .title {
+      color: white;
+    }
+    .subtitle {
+      color: #ffffff;
+    }
 
-  .dark-theme .line-right {
-    background: linear-gradient(to left, transparent, white);
+    .line-left {
+      background: linear-gradient(to right, transparent, white);
+    }
+    .line-right {
+      background: linear-gradient(to left, transparent, white);
+    }
   }
-
 </style>

@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import LogoVerticalDark from "../../assets/icons/verticales/LogoVerticalDark.png";
+import SliceTitulo from "../SliceTitulo.astro";
 
 const logos = Array(6).fill(LogoVerticalDark);
 ---
@@ -53,20 +54,8 @@ const logos = Array(6).fill(LogoVerticalDark);
 </script>
 
 <section class="patrocinadores">
-  <div class="flex items-center w-full max-w-3xl mx-auto">
-    <!-- Línea izquierda -->
-    <div class="line-left"></div>
 
-    <!-- Texto centrado -->
-    <h2 class="px-4 text-2xl font-bold title">Patrocinadores</h2>
-
-    <!-- Línea derecha -->
-    <div class="line-right"></div>
-  </div>
-
-  <p class="subtitle">
-    El Evento EME puede llevarse a cabo gracias a la colaboración de…
-  </p>
+  <SliceTitulo title="Patrocinadores" subtitle="El Evento EME puede llevarse a cabo gracias a la colaboración de…" />
 
   <div class="grid">
     {
@@ -102,54 +91,7 @@ const logos = Array(6).fill(LogoVerticalDark);
     background: #0f0f1a;
     color: white;
   }
-
-  .title {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    display: inline-block;
-    padding-bottom: 0.25rem;
-    color: #1e293b;
-    transition: color 0.3s ease;
-  }
-
-  .dark-theme .title {
-    color: white;
-  }
-
-  .subtitle {
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-    color: #475569;
-    transition: color 0.3s ease;
-  }
-
-  .dark-theme .subtitle {
-    color: #e2e8f0;
-  }
-
-  /* Líneas decorativas */
-  .line-left {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #64748b);
-    transition: background 0.3s ease;
-  }
-
-  .line-right {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(to left, transparent, #64748b);
-    transition: background 0.3s ease;
-  }
-
-  .dark-theme .line-left {
-    background: linear-gradient(to right, transparent, white);
-  }
-
-  .dark-theme .line-right {
-    background: linear-gradient(to left, transparent, white);
-  }
-
+  
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
@@ -246,14 +188,6 @@ const logos = Array(6).fill(LogoVerticalDark);
 
     .patrocinadores {
       padding: 2rem 1rem;
-    }
-
-    .title {
-      font-size: 1.75rem;
-    }
-
-    .subtitle {
-      font-size: 1rem;
     }
   }
 </style>
