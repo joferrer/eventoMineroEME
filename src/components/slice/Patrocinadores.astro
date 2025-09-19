@@ -5,9 +5,68 @@ import LogoVerticalDark from "../../assets/icons/verticales/LogoVerticalDark.png
 const logos = Array(6).fill(LogoVerticalDark);
 ---
 
+<!-- Script para detectar el tema -->
+<script>
+  // Función para detectar si el tema actual es oscuro
+  function isDarkMode() {
+    if (typeof window !== "undefined") {
+      return (
+        document.documentElement.classList.contains("dark") ||
+        (window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      );
+    }
+    return false;
+  }
+
+  // Aplicar tema al cargar la página
+  function applyTheme() {
+    const isDark = isDarkMode();
+    const section = document.querySelector(".patrocinadores");
+    if (section) {
+      if (isDark) {
+        section.classList.add("dark-theme");
+      } else {
+        section.classList.remove("dark-theme");
+      }
+    }
+  }
+
+  // Aplicar tema cuando la página carga
+  document.addEventListener("DOMContentLoaded", applyTheme);
+
+  // Escuchar cambios en el tema del sistema
+  if (typeof window !== "undefined" && window.matchMedia) {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", applyTheme);
+  }
+
+  // Observar cambios en la clase dark del documento
+  if (typeof window !== "undefined") {
+    const observer = new MutationObserver(applyTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+  }
+</script>
+
 <section class="patrocinadores">
-  <h2>Patrocinadores</h2>
-  <p>El Evento EME puede llevarse a cabo gracias a la colaboración de…</p>
+  <div class="flex items-center w-full max-w-3xl mx-auto">
+    <!-- Línea izquierda -->
+    <div class="line-left"></div>
+
+    <!-- Texto centrado -->
+    <h2 class="px-4 text-2xl font-bold title">Patrocinadores</h2>
+
+    <!-- Línea derecha -->
+    <div class="line-right"></div>
+  </div>
+
+  <p class="subtitle">
+    El Evento EME puede llevarse a cabo gracias a la colaboración de…
+  </p>
 
   <div class="grid">
     {
@@ -31,24 +90,64 @@ const logos = Array(6).fill(LogoVerticalDark);
   .patrocinadores {
     padding: 3rem 1rem;
     text-align: center;
-    background: #0f0f1a;
-    color: white;
+    background: #f8fafc;
+    color: #1e293b;
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.3s ease;
   }
 
-  .patrocinadores h2 {
+  .patrocinadores.dark-theme {
+    background: #0f0f1a;
+    color: white;
+  }
+
+  .title {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-    border-bottom: 2px solid white;
     display: inline-block;
     padding-bottom: 0.25rem;
+    color: #1e293b;
+    transition: color 0.3s ease;
   }
 
-  .patrocinadores p {
+  .dark-theme .title {
+    color: white;
+  }
+
+  .subtitle {
     margin-bottom: 2rem;
     font-size: 1.1rem;
+    color: #475569;
+    transition: color 0.3s ease;
+  }
+
+  .dark-theme .subtitle {
+    color: #e2e8f0;
+  }
+
+  /* Líneas decorativas */
+  .line-left {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #64748b);
+    transition: background 0.3s ease;
+  }
+
+  .line-right {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to left, transparent, #64748b);
+    transition: background 0.3s ease;
+  }
+
+  .dark-theme .line-left {
+    background: linear-gradient(to right, transparent, white);
+  }
+
+  .dark-theme .line-right {
+    background: linear-gradient(to left, transparent, white);
   }
 
   .grid {
@@ -61,22 +160,77 @@ const logos = Array(6).fill(LogoVerticalDark);
   }
 
   .card {
-    background: #1a1a2e;
+    background: linear-gradient(
+      to left,
+      rgba(71, 85, 105, 0.08) 0%,
+      #f1f5f9 30%,
+      #ffffff 100%
+    );
     padding: 1rem;
-    border-radius: 12px;
     width: 100px;
     height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid transparent;
+    border-image: linear-gradient(
+        to left,
+        rgba(71, 85, 105, 0.4),
+        rgba(71, 85, 105, 0)
+      )
+      1;
+    border-radius: 0;
+    box-shadow:
+      inset -2px 0 10px rgba(71, 85, 105, 0.05),
+      0 2px 4px rgba(0, 0, 0, 0.05);
     transition:
-      transform 0.3s,
-      box-shadow 0.3s;
+      transform 0.3s ease,
+      box-shadow 0.3s ease,
+      border-image-source 0.3s ease,
+      background 0.3s ease;
+  }
+
+  .dark-theme .card {
+    background: linear-gradient(
+      to left,
+      rgba(255, 255, 255, 0.08) 0%,
+      #1a1a2e 30%,
+      #0d0d14 100%
+    );
+    border-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.3),
+        rgba(255, 255, 255, 0)
+      )
+      1;
+    box-shadow: inset -2px 0 10px rgba(255, 255, 255, 0.05);
   }
 
   .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    box-shadow:
+      inset -2px 0 12px rgba(71, 85, 105, 0.1),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      0 0 15px rgba(71, 85, 105, 0.15);
+    border-image: linear-gradient(
+        to left,
+        rgba(71, 85, 105, 0.7),
+        rgba(71, 85, 105, 0)
+      )
+      1;
+  }
+
+  .dark-theme .card:hover {
+    transform: scale(1.05);
+    box-shadow:
+      inset -2px 0 12px rgba(255, 255, 255, 0.08),
+      0 0 10px rgba(255, 255, 255, 0.15);
+    border-image: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 0.6),
+        rgba(255, 255, 255, 0)
+      )
+      1;
   }
 
   @media (max-width: 768px) {
@@ -88,6 +242,18 @@ const logos = Array(6).fill(LogoVerticalDark);
   @media (max-width: 480px) {
     .grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+
+    .patrocinadores {
+      padding: 2rem 1rem;
+    }
+
+    .title {
+      font-size: 1.75rem;
+    }
+
+    .subtitle {
+      font-size: 1rem;
     }
   }
 </style>
