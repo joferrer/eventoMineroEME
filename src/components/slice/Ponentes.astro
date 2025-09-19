@@ -1,21 +1,20 @@
 ---
 
-import Image from 'astro/components/Image.astro';
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 
 
 const ponentes = await getCollection('ponentes');
-console.log(ponentes);
 
 ---
 
-<section>
+<section class="p-2 flex flex-col items-center text-center my-8">
     <h2>Ponentes</h2>
-    <div class="flex gap-1 flex-wrap">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
         {ponentes.map(ponente => (
-            <div class="border p-2 rounded">
+            <div class="border p-2 rounded flex flex-col items-center gap-2 h-44">
                 <h3>{ponente.data.nombre}</h3>
-                <Image src={ponente.data.foto} alt={ponente.data.nombre} width={150} height={150} class={"object-cover"} />
+                <Image src={ponente.data.foto} alt={ponente.data.nombre}  class={"object-cover w-32 h-32"} />
             </div>
         ))}
     </div>
