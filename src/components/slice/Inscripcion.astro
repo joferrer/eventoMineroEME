@@ -1,257 +1,442 @@
 ---
 import SliceTitulo from "../SliceTitulo.astro";
-
-// FormularioRegistro.astro
 ---
 
-<section
-  class="max-w-2xl mx-auto p-6 bg-white dark:bg-[#0f0f1a] shadow-xl rounded-2xl"
+<div
+  class="min-h-screen relative overflow-hidden bg-white dark:bg-[#0f0f1a] transition-colors duration-300"
 >
-  <SliceTitulo
-    title="Inscripción al evento"
-    subtitle="Complete el siguiente formulario para inscribirse."
-  />
-  <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
-    Formulario de Inscripción
-  </h2>
-
-  <form class="space-y-5">
-    <!-- 1. Nombre completo -->
-    <div>
-      <label
-        for="nombre"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+  <div class="relative z-10 container mx-auto px-4 py-12">
+    <!-- Formulario -->
+    <div class="max-w-4xl mx-auto">
+      <form
+        class="backdrop-blur-xl bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 rounded-3xl p-6 md:p-12 shadow-2xl hover:shadow-blue-500/20 hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2"
+        id="registroForm"
       >
-        Nombre completo <span class="text-red-500">*</span>
-      </label>
-      <input
-        id="nombre"
-        name="nombre"
-        type="text"
-        required
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      />
-      <p class="text-xs text-gray-500">
-        Para la acreditación y certificados de asistencia
-      </p>
-    </div>
+        <SliceTitulo title="Registro de Asistentes" />
 
-    <!-- 2. Tipo de identidad -->
-    <div>
-      <label
-        for="tipoIdentidad"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Tipo de identidad
-      </label>
-      <select
-        id="tipoIdentidad"
-        name="tipoIdentidad"
-        required
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      >
-        <option value="">Seleccione...</option>
-        <option value="cedula">Cédula</option>
-        <option value="pasaporte">Pasaporte</option>
-      </select>
-    </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Nombre completo -->
+          <div class="md:col-span-2 group">
+            <div class="relative">
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                required
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Nombre completo"
+              />
+              <label
+                for="nombre"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Nombre completo *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Para acreditación y certificados de asistencia
+            </p>
+          </div>
 
-    <!-- 3. Documento de identidad -->
-    <div>
-      <label
-        for="documento"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Documento de identidad
-      </label>
-      <input
-        id="documento"
-        name="documento"
-        type="text"
-        required
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      />
-    </div>
+          <!-- Tipo de identidad -->
+          <div class="group">
+            <div class="relative">
+              <select
+                id="tipoIdentidad"
+                name="tipoIdentidad"
+                required
+                class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+              >
+                <option value="" class="text-gray-800 bg-gray-100"
+                  >Seleccionar tipo</option
+                >
+                <option value="cedula" class="text-gray-800 bg-gray-100"
+                  >Cédula</option
+                >
+                <option value="pasaporte" class="text-gray-800 bg-gray-100"
+                  >Pasaporte</option
+                >
+              </select>
+              <label
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2"
+              >
+                Tipo de identidad *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Para control de ingreso y certificación
+            </p>
+          </div>
 
-    <!-- 4. Correo electrónico -->
-    <div>
-      <label
-        for="email"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Correo electrónico
-      </label>
-      <input
-        id="email"
-        name="email"
-        type="email"
-        required
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      />
-      <p class="text-xs text-gray-500">
-        Donde desea recibir memorias y presentaciones del evento
-      </p>
-    </div>
+          <!-- Documento de identidad -->
+          <div class="group">
+            <div class="relative">
+              <input
+                type="text"
+                id="documento"
+                name="documento"
+                required
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Documento de identidad"
+              />
+              <label
+                for="documento"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Documento de identidad *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Número del documento seleccionado
+            </p>
+          </div>
 
-    <!-- 5. Número de celular -->
-    <div>
-      <label
-        for="celular"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Número de celular
-      </label>
-      <input
-        id="celular"
-        name="celular"
-        type="tel"
-        required
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      />
-    </div>
+          <!-- Correo electrónico -->
+          <div class="group">
+            <div class="relative">
+              <input
+                type="email"
+                id="correo"
+                name="correo"
+                required
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Correo electrónico"
+              />
+              <label
+                for="correo"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Correo electrónico *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Donde desea recibir memorias y presentaciones del evento
+            </p>
+          </div>
 
-    <!-- 6. Empresa o entidad -->
-    <div>
-      <label
-        for="empresa"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Empresa o entidad a la que representa
-      </label>
-      <input
-        id="empresa"
-        name="empresa"
-        type="text"
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      />
-    </div>
+          <!-- Número de celular -->
+          <div class="group">
+            <div class="relative">
+              <input
+                type="tel"
+                id="celular"
+                name="celular"
+                required
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Número de celular"
+              />
+              <label
+                for="celular"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Número de celular *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Para contacto antes o durante el evento si es necesario
+            </p>
+          </div>
 
-    <!-- 7. Cargo -->
-    <div>
-      <label
-        for="cargo"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Cargo o rol dentro de la organización
-      </label>
-      <input
-        id="cargo"
-        name="cargo"
-        type="text"
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      />
-    </div>
+          <!-- Empresa o entidad -->
+          <div class="group">
+            <div class="relative">
+              <input
+                type="text"
+                id="empresa"
+                name="empresa"
+                required
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Empresa o entidad"
+              />
+              <label
+                for="empresa"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Empresa o entidad que representa *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Nombre completo de la organización
+            </p>
+          </div>
 
-    <!-- 7. Tipo de entidad -->
-    <div>
-      <label
-        for="tipoEntidad"
-        class="block text-sm font-medium text-gray-700 dark:text-gray-300"
-      >
-        Tipo de entidad
-      </label>
-      <select
-        id="tipoEntidad"
-        name="tipoEntidad"
-        required
-        class="mt-1 w-full rounded-xl border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-white shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3"
-      >
-        <option value="">Seleccione...</option>
-        <option>Empresa privada</option>
-        <option>Entidad pública</option>
-        <option>Academia / Universidad</option>
-        <option>Medio de comunicación</option>
-        <option>Estudiante</option>
-        <option>Independiente / Consultor</option>
-        <option>Otro</option>
-      </select>
-    </div>
+          <!-- Cargo o rol -->
+          <div class="group">
+            <div class="relative">
+              <input
+                type="text"
+                id="cargo"
+                name="cargo"
+                required
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Cargo o rol"
+              />
+              <label
+                for="cargo"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Cargo o rol dentro de la organización *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Su posición o función actual
+            </p>
+          </div>
 
-    <!-- 8. Asociación -->
-    <div>
-      <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
-        ¿Su organización está asociada a ASOCARBONOR?
-      </p>
-      <div class="mt-2 space-y-2">
-        <label class="flex items-center gap-2">
-          <input
-            type="radio"
-            name="asociada"
-            value="si"
-            class="text-blue-600"
-            required
-          />
-          Sí
-        </label>
-        <label class="flex items-center gap-2">
-          <input type="radio" name="asociada" value="no" />
-          No
-        </label>
-        <label class="flex items-center gap-2">
-          <input type="radio" name="asociada" value="no-sabe" />
-          No aplica / No sé
-        </label>
-      </div>
-    </div>
+          <!-- Tipo de entidad -->
+          <div class="md:col-span-2 group">
+            <div class="relative">
+              <select
+                id="tipoEntidad"
+                name="tipoEntidad"
+                required
+                class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+              >
+                <option value="" class="text-gray-800 bg-gray-100"
+                  >Seleccionar tipo de entidad</option
+                >
+                <option
+                  value="empresa_privada"
+                  class="text-gray-800 bg-gray-100">Empresa privada</option
+                >
+                <option
+                  value="entidad_publica"
+                  class="text-gray-800 bg-gray-100">Entidad pública</option
+                >
+                <option
+                  value="academia_universidad"
+                  class="text-gray-800 bg-gray-100"
+                  >Academia / Universidad</option
+                >
+                <option
+                  value="medio_comunicacion"
+                  class="text-gray-800 bg-gray-100"
+                  >Medio de comunicación</option
+                >
+                <option value="estudiante" class="text-gray-800 bg-gray-100"
+                  >Estudiante</option
+                >
+                <option
+                  value="independiente_consultor"
+                  class="text-gray-800 bg-gray-100"
+                  >Independiente / Consultor</option
+                >
+                <option value="otro" class="text-gray-800 bg-gray-100"
+                  >Otro</option
+                >
+              </select>
+              <label
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2"
+              >
+                Tipo de entidad *
+              </label>
+            </div>
+            <p class="text-black/70 dark:text-white/70 text-sm mt-2 ml-2">
+              Categoría que mejor describe su organización
+            </p>
+          </div>
 
-    <!-- 9. Días de asistencia -->
-    <div>
-      <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
-        ¿Asistirá los dos días del evento?
-      </p>
-      <div class="mt-2 space-y-2">
-        <label class="flex items-center gap-2">
-          <input
-            type="radio"
-            name="dias"
-            value="ambos"
-            class="text-blue-600"
-            required
-          />
-          Sí
-        </label>
-        <label class="flex items-center gap-2">
-          <input type="radio" name="dias" value="solo-19" />
-          Solo el 19 de noviembre
-        </label>
-        <label class="flex items-center gap-2">
-          <input type="radio" name="dias" value="solo-20" />
-          Solo el 20 de noviembre
-        </label>
-      </div>
-    </div>
+          <!-- Campo "Otro" (se muestra solo si selecciona "Otro") -->
+          <div
+            class="md:col-span-2 group"
+            id="otroTipoEntidad"
+            style="display: none;"
+          >
+            <div class="relative">
+              <input
+                type="text"
+                id="otroTipo"
+                name="otroTipo"
+                class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+                placeholder="Especifique otro tipo"
+              />
+              <label
+                for="otroTipo"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+              >
+                Especifique el tipo de entidad
+              </label>
+            </div>
+          </div>
+        </div>
 
-    <!-- 10. Boletín -->
-    <div>
-      <p class="text-sm font-medium text-gray-700 dark:text-gray-300">
-        ¿Desea recibir el boletín electrónico de Asocarbonor?
-      </p>
-      <div class="mt-2 space-y-2">
-        <label class="flex items-center gap-2">
-          <input
-            type="radio"
-            name="boletin"
-            value="si"
-            class="text-blue-600"
-            required
-          />
-          Sí, quiero mantenerme informado(a)
-        </label>
-        <label class="flex items-center gap-2">
-          <input type="radio" name="boletin" value="no" />
-          No, gracias
-        </label>
-      </div>
-    </div>
+        <!-- Preguntas -->
+        <div class="mt-16 space-y-8">
+          <!-- Pregunta 1: Asociado a ASOCARBONOR -->
+          <div
+            class="backdrop-blur-sm bg-black/5 dark:bg-white/5 rounded-2xl p-8 border border-black/10 dark:border-white/10 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-all duration-300"
+          >
+            <h3
+              class="text-black dark:text-white font-bold text-xl mb-6 flex items-center"
+            >
+              <span
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mr-3"
+              ></span>
+              ¿Su organización está asociada a ASOCARBONOR?
+            </h3>
+            <div class="space-y-4">
+              {
+                ["si", "no", "no_aplica"].map((value, index) => {
+                  const labels = ["Sí", "No", "No aplica / No sé"];
+                  return (
+                    <label class="flex items-center cursor-pointer group/radio hover:bg-blue-500/10 p-3 rounded-xl transition-all duration-200">
+                      <input
+                        type="radio"
+                        name="asociadoAsocarbonor"
+                        value={value}
+                        required
+                        class="w-5 h-5 text-blue-600 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 focus:ring-blue-500 focus:ring-2"
+                      />
+                      <span class="ml-4 text-black dark:text-white/90 group-hover/radio:text-blue-500 font-medium transition-colors">
+                        {labels[index]}
+                      </span>
+                    </label>
+                  );
+                })
+              }
+            </div>
+          </div>
 
-    <!-- Botón de envío -->
-    <div class="text-center">
-      <button
-        type="submit"
-        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-all"
-      >
-        Enviar inscripción
-      </button>
+          <!-- Pregunta 2: Días de asistencia -->
+          <div
+            class="backdrop-blur-sm bg-black/5 dark:bg-white/5 rounded-2xl p-8 border border-black/10 dark:border-white/10 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-all duration-300"
+          >
+            <h3
+              class="text-black dark:text-white font-bold text-xl mb-6 flex items-center"
+            >
+              <span
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mr-3"
+              ></span>
+              ¿Asistirá los dos días del evento?
+            </h3>
+            <div class="space-y-4">
+              {
+                ["ambos_dias", "solo_19", "solo_20"].map((value, index) => {
+                  const labels = [
+                    "Sí",
+                    "Solo el 19 de noviembre",
+                    "Solo el 20 de noviembre",
+                  ];
+                  return (
+                    <label class="flex items-center cursor-pointer group/radio hover:bg-blue-500/10 p-3 rounded-xl transition-all duration-200">
+                      <input
+                        type="radio"
+                        name="diasAsistencia"
+                        value={value}
+                        required
+                        class="w-5 h-5 text-blue-600 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 focus:ring-blue-500 focus:ring-2"
+                      />
+                      <span class="ml-4 text-black dark:text-white/90 group-hover/radio:text-blue-500 font-medium transition-colors">
+                        {labels[index]}
+                      </span>
+                    </label>
+                  );
+                })
+              }
+            </div>
+          </div>
+
+          <!-- Pregunta 3: Boletín electrónico -->
+          <div
+            class="backdrop-blur-sm bg-black/5 dark:bg-white/5 rounded-2xl p-8 border border-black/10 dark:border-white/10 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-all duration-300"
+          >
+            <h3
+              class="text-black dark:text-white font-bold text-xl mb-6 flex items-center"
+            >
+              <span
+                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mr-3"
+              ></span>
+              ¿Desea recibir el boletín electrónico de Asocarbonor?
+            </h3>
+            <div class="space-y-4">
+              {
+                ["si", "no"].map((value, index) => {
+                  const labels = [
+                    "Sí, quiero mantenerme informado(a)",
+                    "No, gracias",
+                  ];
+                  return (
+                    <label class="flex items-center cursor-pointer group/radio hover:bg-blue-500/10 p-3 rounded-xl transition-all duration-200">
+                      <input
+                        type="radio"
+                        name="boletinElectronico"
+                        value={value}
+                        required
+                        class="w-5 h-5 text-blue-600 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 focus:ring-blue-500 focus:ring-2"
+                      />
+                      <span class="ml-4 text-black dark:text-white/90 group-hover/radio:text-blue-500 font-medium transition-colors">
+                        {labels[index]}
+                      </span>
+                    </label>
+                  );
+                })
+              }
+            </div>
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <div class="mt-16 text-center">
+          <button
+            type="submit"
+            class="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-6 px-16 rounded-full text-lg shadow-2xl hover:shadow-blue-600/30 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 group"
+          >
+            <span class="relative z-10 flex items-center justify-center">
+              <svg
+                class="w-6 h-6 mr-3 group-hover:animate-spin"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 4v1m0 14v1m8-8h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"
+                ></path>
+              </svg>
+              Registrar Asistencia
+            </span>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            >
+            </div>
+          </button>
+          <p
+            class="text-black/60 dark:text-white/60 text-sm mt-6 max-w-md mx-auto leading-relaxed"
+          >
+            Todos los campos marcados con <span
+              class="text-blue-500 font-semibold">*</span
+            > son obligatorios.
+          </p>
+        </div>
+      </form>
     </div>
-  </form>
-</section>
+  </div>
+</div>
+
+<script>
+  // Mostrar/ocultar campo "Otro" según la selección
+  document.addEventListener("DOMContentLoaded", function () {
+    const tipoEntidadSelect = document.getElementById(
+      "tipoEntidad"
+    ) as HTMLSelectElement;
+    const otroDiv = document.getElementById(
+      "otroTipoEntidad"
+    ) as HTMLDivElement;
+    const otroInput = document.getElementById("otroTipo") as HTMLInputElement;
+
+    if (tipoEntidadSelect && otroDiv && otroInput) {
+      tipoEntidadSelect.addEventListener("change", function () {
+        if (tipoEntidadSelect.value === "otro") {
+          otroDiv.style.display = "block";
+          otroInput.required = true;
+        } else {
+          otroDiv.style.display = "none";
+          otroInput.required = false;
+          otroInput.value = "";
+        }
+      });
+    }
+  });
+</script>
