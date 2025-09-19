@@ -1,22 +1,21 @@
 ---
+import { getCollection } from "astro:content";
+import PonenteCard from "../PonenteCard.astro";
+import SliceTitulo from "../SliceTitulo.astro";
 
-import { Image } from 'astro:assets';
-import { getCollection } from 'astro:content';
-
-
-const ponentes = await getCollection('ponentes');
-
+const ponentes = await getCollection("ponentes");
 ---
 
 <section class="p-2 flex flex-col items-center text-center my-8">
-    <h2>Ponentes</h2>
+    <SliceTitulo title="Ponentes" />
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-        {ponentes.map(ponente => (
-            <div class="border p-2 rounded flex flex-col items-center gap-2 h-44">
-                <h3>{ponente.data.nombre}</h3>
-                <Image src={ponente.data.foto} alt={ponente.data.nombre}  class={"object-cover w-32 h-32"} />
-            </div>
-        ))}
+        {
+            ponentes.map((ponente) => (
+                <PonenteCard
+                    nombre={ponente.data.nombre}
+                    foto={ponente.data.foto}
+                />
+            ))
+        }
     </div>
-       
 </section>
