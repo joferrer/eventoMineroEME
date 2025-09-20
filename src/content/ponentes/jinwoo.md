@@ -1,8 +1,8 @@
 ---
 id: jinwoo-minero
-nombre: Sung Jinwoo
+nombre: Jairo
 description: Cazador de clase S y explorador incansable de las profundidades.
-foto: "../../assets/ponentes/fotos/sungJinwoo.png"
+foto: "../../assets/ponentes/fotos/ponente4.webp"
 ---
 
 # Sung Jinwoo

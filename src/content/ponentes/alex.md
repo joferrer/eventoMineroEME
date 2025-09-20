@@ -2,7 +2,7 @@
 id: alex-minero
 nombre: Alex
 description: Experto en minería con más de 20 años de experiencia en la industria, especializado en tecnologías sostenibles y gestión de proyectos mineros.
-foto: "../../assets/ponentes/fotos/alex.jpg"
+foto: "../../assets/ponentes/fotos/ponenten1.jpg"
 ---
 
 # Alex Minera

@@ -1,11 +1,11 @@
 ---
 id: zoolander-minero
-nombre: Zoolander
+nombre: Carlos
 description: El minero más deslumbrante bajo tierra.
-foto: "../../assets/ponentes/fotos/zoolander.png"
+foto: "../../assets/ponentes/fotos/ponente6.webp"
 ---
 
-# Derek Zoolander
+# Derek Carlos
     
 Soy Derek Zoolander. Antes fui el modelo masculino más famoso del mundo… ahora soy el minero más deslumbrante bajo tierra. Cambié las luces de la pasarela por la penumbra de los túneles, y descubrí que no hay nada más brillante que una veta de carbón… bueno, salvo yo mismo.
 
