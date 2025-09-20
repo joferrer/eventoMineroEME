@@ -9,7 +9,7 @@ import SliceTitulo from "../SliceTitulo.astro";
     <!-- Formulario -->
     <div class="max-w-4xl mx-auto">
       <form
-        class="backdrop-blur-xl bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 rounded-3xl p-6 md:p-12 shadow-2xl hover:shadow-blue-500/20 hover:bg-black/10 dark:hover:bg-white/15 transition-all duration-500 transform hover:-translate-y-2"
+        class="backdrop-blur-xl bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 rounded-3xl p-6 md:p-12 shadow-xl hover:shadow-blue-500/20transition-all duration-500"
         id="registroForm"
       >
         <SliceTitulo title="Registro de Asistentes" />
@@ -28,7 +28,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="nombre"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Nombre completo *
               </label>
@@ -51,14 +51,17 @@ import SliceTitulo from "../SliceTitulo.astro";
                   >Seleccionar tipo</option
                 >
                 <option value="cedula" class="text-gray-800 bg-gray-100"
-                  >Cédula</option
+                  >Cédula de Ciudadanía</option
                 >
                 <option value="pasaporte" class="text-gray-800 bg-gray-100"
                   >Pasaporte</option
                 >
+                <option value="pasaporte" class="text-gray-800 bg-gray-100"
+                  >otro</option
+                >
               </select>
               <label
-                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2"
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2"
               >
                 Tipo de identidad *
               </label>
@@ -81,7 +84,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="documento"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Documento de identidad *
               </label>
@@ -104,7 +107,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="correo"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Correo electrónico *
               </label>
@@ -127,7 +130,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="celular"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Número de celular *
               </label>
@@ -150,7 +153,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="empresa"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Empresa o entidad que representa *
               </label>
@@ -173,7 +176,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="cargo"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Cargo o rol dentro de la organización *
               </label>
@@ -184,7 +187,7 @@ import SliceTitulo from "../SliceTitulo.astro";
           </div>
 
           <!-- Tipo de entidad -->
-          <div class="md:col-span-2 group">
+          <div class="group">
             <div class="relative">
               <select
                 id="tipoEntidad"
@@ -226,7 +229,7 @@ import SliceTitulo from "../SliceTitulo.astro";
                 >
               </select>
               <label
-                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2"
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2"
               >
                 Tipo de entidad *
               </label>
@@ -238,7 +241,7 @@ import SliceTitulo from "../SliceTitulo.astro";
 
           <!-- Campo "Otro" (se muestra solo si selecciona "Otro") -->
           <div
-            class="md:col-span-2 group"
+            class="group"
             id="otroTipoEntidad"
             style="display: none;"
           >
@@ -252,125 +255,109 @@ import SliceTitulo from "../SliceTitulo.astro";
               />
               <label
                 for="otroTipo"
-                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
+                class="absolute left-6 -top-3 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2 peer-placeholder-shown:text-black/50 dark:peer-placeholder-shown:text-white/60 peer-placeholder-shown:top-4 peer-placeholder-shown:text-base peer-placeholder-shown:font-normal peer-focus:-top-5 peer-focus:text-sm peer-focus:font-semibold transition-all duration-300"
               >
                 Especifique el tipo de entidad
               </label>
             </div>
           </div>
-        </div>
 
-        <!-- Preguntas -->
-        <div class="mt-16 space-y-8">
-          <!-- Pregunta 1: Asociado a ASOCARBONOR -->
-          <div
-            class="backdrop-blur-sm bg-black/5 dark:bg-white/5 rounded-2xl p-8 border border-black/10 dark:border-white/10 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-all duration-300"
-          >
-            <h3
-              class="text-black dark:text-white font-bold text-xl mb-6 flex items-center"
-            >
-              <span
-                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mr-3"
-              ></span>
-              ¿Su organización está asociada a ASOCARBONOR?
-            </h3>
-            <div class="space-y-4">
-              {
-                ["si", "no", "no_aplica"].map((value, index) => {
-                  const labels = ["Sí", "No", "No aplica / No sé"];
-                  return (
-                    <label class="flex items-center cursor-pointer group/radio hover:bg-blue-500/10 p-3 rounded-xl transition-all duration-200">
-                      <input
-                        type="radio"
-                        name="asociadoAsocarbonor"
-                        value={value}
-                        required
-                        class="w-5 h-5 text-blue-600 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 focus:ring-blue-500 focus:ring-2"
-                      />
-                      <span class="ml-4 text-black dark:text-white/90 group-hover/radio:text-blue-500 font-medium transition-colors">
-                        {labels[index]}
-                      </span>
-                    </label>
-                  );
-                })
-              }
+          <div class="group">
+            <div class="relative">
+              <select
+                id="tipoEntidad"
+                name="tipoEntidad"
+                required
+                class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+              >
+                <option value="" class="text-gray-800 bg-gray-100"
+                  >Seleccionar tipo de entidad</option
+                >
+                <option
+                  value="empresa_privada"
+                  class="text-gray-800 bg-gray-100">Si</option
+                >
+                <option
+                  value="entidad_publica"
+                  class="text-gray-800 bg-gray-100">No</option
+                >
+                <option
+                  value="entidad_publica"
+                  class="text-gray-800 bg-gray-100">No aplica / No sé</option
+                >
+              </select>
+              <label
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2"
+              >
+                ¿Su organización está asociada a ASOCARBONOR? *
+              </label>
             </div>
           </div>
 
           <!-- Pregunta 2: Días de asistencia -->
-          <div
-            class="backdrop-blur-sm bg-black/5 dark:bg-white/5 rounded-2xl p-8 border border-black/10 dark:border-white/10 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-all duration-300"
-          >
-            <h3
-              class="text-black dark:text-white font-bold text-xl mb-6 flex items-center"
-            >
-              <span
-                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mr-3"
-              ></span>
-              ¿Asistirá los dos días del evento?
-            </h3>
-            <div class="space-y-4">
-              {
-                ["ambos_dias", "solo_19", "solo_20"].map((value, index) => {
-                  const labels = [
-                    "Sí",
-                    "Solo el 19 de noviembre",
-                    "Solo el 20 de noviembre",
-                  ];
-                  return (
-                    <label class="flex items-center cursor-pointer group/radio hover:bg-blue-500/10 p-3 rounded-xl transition-all duration-200">
-                      <input
-                        type="radio"
-                        name="diasAsistencia"
-                        value={value}
-                        required
-                        class="w-5 h-5 text-blue-600 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 focus:ring-blue-500 focus:ring-2"
-                      />
-                      <span class="ml-4 text-black dark:text-white/90 group-hover/radio:text-blue-500 font-medium transition-colors">
-                        {labels[index]}
-                      </span>
-                    </label>
-                  );
-                })
-              }
+
+          <div class="group">
+            <div class="relative">
+              <select
+                id="tipoEntidad"
+                name="tipoEntidad"
+                required
+                class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+              >
+                <option value="" class="text-gray-800 bg-gray-100"
+                  >Seleccionar tipo de entidad</option
+                >
+                <option
+                  value="empresa_privada"
+                  class="text-gray-800 bg-gray-100">Si</option
+                >
+                <option
+                  value="entidad_publica"
+                  class="text-gray-800 bg-gray-100"
+                  >Solo el 19 de noviembre</option
+                >
+                <option
+                  value="entidad_publica"
+                  class="text-gray-800 bg-gray-100"
+                >
+                  Solo el 20 de noviembre</option
+                >
+              </select>
+              <label
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2"
+              >
+                ¿Asistirá los dos días del evento? *
+              </label>
             </div>
           </div>
 
           <!-- Pregunta 3: Boletín electrónico -->
-          <div
-            class="backdrop-blur-sm bg-black/5 dark:bg-white/5 rounded-2xl p-8 border border-black/10 dark:border-white/10 hover:bg-blue-500/5 dark:hover:bg-blue-500/10 transition-all duration-300"
-          >
-            <h3
-              class="text-black dark:text-white font-bold text-xl mb-6 flex items-center"
-            >
-              <span
-                class="w-2 h-2 bg-gradient-to-r from-blue-500 to-blue-700 rounded-full mr-3"
-              ></span>
-              ¿Desea recibir el boletín electrónico de Asocarbonor?
-            </h3>
-            <div class="space-y-4">
-              {
-                ["si", "no"].map((value, index) => {
-                  const labels = [
-                    "Sí, quiero mantenerme informado(a)",
-                    "No, gracias",
-                  ];
-                  return (
-                    <label class="flex items-center cursor-pointer group/radio hover:bg-blue-500/10 p-3 rounded-xl transition-all duration-200">
-                      <input
-                        type="radio"
-                        name="boletinElectronico"
-                        value={value}
-                        required
-                        class="w-5 h-5 text-blue-600 bg-black/10 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 focus:ring-blue-500 focus:ring-2"
-                      />
-                      <span class="ml-4 text-black dark:text-white/90 group-hover/radio:text-blue-500 font-medium transition-colors">
-                        {labels[index]}
-                      </span>
-                    </label>
-                  );
-                })
-              }
+          <div class="group">
+            <div class="relative">
+              <select
+                id="tipoEntidad"
+                name="tipoEntidad"
+                required
+                class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
+              >
+                <option value="" class="text-gray-800 bg-gray-100"
+                  >Seleccionar tipo de entidad</option
+                >
+                <option
+                  value="empresa_privada"
+                  class="text-gray-800 bg-gray-100"
+                  >Sí, quiero mantenerme informado(a)</option
+                >
+                <option
+                  value="entidad_publica"
+                  class="text-gray-800 bg-gray-100">No, gracias</option
+                >
+              </select>
+              <label
+                class="absolute left-6 -top-5 bg-gradient-to-r from-blue-500 to-blue-600 bg-clip-text text-transparent text-sm font-semibold px-2"
+              >
+                ¿Desea recibir el boletín electrónico de Asocarbonor? *
+              </label>
             </div>
           </div>
         </div>
@@ -379,7 +366,7 @@ import SliceTitulo from "../SliceTitulo.astro";
         <div class="mt-16 text-center">
           <button
             type="submit"
-            class="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-6 px-16 rounded-full text-lg shadow-2xl hover:shadow-blue-600/30 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 group"
+            class="relative overflow-hidden bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-6 px-16 rounded-full text-lg shadow-2xl hover:shadow-blue-600/30 transform hover:scale-105 hover:-translate-y-1 transition-all duration-300 group"
           >
             <span class="relative z-10 flex items-center justify-center">
               <svg
@@ -413,30 +400,30 @@ import SliceTitulo from "../SliceTitulo.astro";
       </form>
     </div>
   </div>
+
+  <script>
+    // Mostrar/ocultar campo "Otro" según la selección
+    document.addEventListener("DOMContentLoaded", function () {
+      const tipoEntidadSelect = document.getElementById(
+        "tipoEntidad"
+      ) as HTMLSelectElement;
+      const otroDiv = document.getElementById(
+        "otroTipoEntidad"
+      ) as HTMLDivElement;
+      const otroInput = document.getElementById("otroTipo") as HTMLInputElement;
+
+      if (tipoEntidadSelect && otroDiv && otroInput) {
+        tipoEntidadSelect.addEventListener("change", function () {
+          if (tipoEntidadSelect.value === "otro") {
+            otroDiv.style.display = "block";
+            otroInput.required = true;
+          } else {
+            otroDiv.style.display = "none";
+            otroInput.required = false;
+            otroInput.value = "";
+          }
+        });
+      }
+    });
+  </script>
 </div>
-
-<script>
-  // Mostrar/ocultar campo "Otro" según la selección
-  document.addEventListener("DOMContentLoaded", function () {
-    const tipoEntidadSelect = document.getElementById(
-      "tipoEntidad"
-    ) as HTMLSelectElement;
-    const otroDiv = document.getElementById(
-      "otroTipoEntidad"
-    ) as HTMLDivElement;
-    const otroInput = document.getElementById("otroTipo") as HTMLInputElement;
-
-    if (tipoEntidadSelect && otroDiv && otroInput) {
-      tipoEntidadSelect.addEventListener("change", function () {
-        if (tipoEntidadSelect.value === "otro") {
-          otroDiv.style.display = "block";
-          otroInput.required = true;
-        } else {
-          otroDiv.style.display = "none";
-          otroInput.required = false;
-          otroInput.value = "";
-        }
-      });
-    }
-  });
-</script>
