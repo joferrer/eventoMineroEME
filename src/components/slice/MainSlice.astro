@@ -1,14 +1,18 @@
 ---
+import { Image } from "astro:assets";
 import LogoVerticalDark from "../../assets/icons/verticales/LogoVerticalDark.png";
 import Contador from "../Contador.astro";
 ---
 
 <section class="flex flex-col text-white mt-16">
-  <img
-    src={LogoVerticalDark.src}
+  <Image
+    src={LogoVerticalDark}
     alt="Logo del evento minero EME 2025"
-    class="w-1/2 mx-auto my-8 md:w-1/4 lg:w-1/6"
+    class="w-1/2 mx-auto my-8 md:w-1/4 lg:w-1/6 transition-transform  duration-500 ease-out hover:scale-105 hover:drop-shadow-md"
   />
+
+
+  
   <button
     class="animate-border border-2 rounded-md border-[#034561] px-6 py-3 mx-auto text-lg font-semibold transition-colors duration-1000"
   >
