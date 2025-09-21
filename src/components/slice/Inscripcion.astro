@@ -21,7 +21,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               <input
                 type="text"
                 id="nombre"
-                name="nombre"
+                name="nombre_coompleto"
                 required
                 class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
                 placeholder="Nombre completo"
@@ -43,7 +43,7 @@ import SliceTitulo from "../SliceTitulo.astro";
             <div class="relative">
               <select
                 id="tipoIdentidad"
-                name="tipoIdentidad"
+                name="tipo_doc"
                 required
                 class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
               >
@@ -146,7 +146,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               <input
                 type="text"
                 id="empresa"
-                name="empresa"
+                name="empresa_representa"
                 required
                 class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
                 placeholder="Empresa o entidad"
@@ -191,7 +191,7 @@ import SliceTitulo from "../SliceTitulo.astro";
             <div class="relative">
               <select
                 id="tipoEntidad"
-                name="tipoEntidad"
+                name="tipo_entidad"
                 required
                 class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
               >
@@ -245,7 +245,7 @@ import SliceTitulo from "../SliceTitulo.astro";
               <input
                 type="text"
                 id="otroTipo"
-                name="otroTipo"
+                name="otro_tipo_entidad"
                 class="peer w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white placeholder-transparent focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
                 placeholder="Especifique otro tipo"
               />
@@ -261,8 +261,8 @@ import SliceTitulo from "../SliceTitulo.astro";
           <div class="group">
             <div class="relative content">
               <select
-                id="tipoEntidad"
-                name="tipoEntidad"
+                id="asociada"
+                name="asociada_asocarbonor"
                 required
                 class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
               >
@@ -270,15 +270,15 @@ import SliceTitulo from "../SliceTitulo.astro";
                   >Seleccionar tipo de entidad</option
                 >
                 <option
-                  value="empresa_privada"
+                  value="si"
                   class="text-gray-800 bg-gray-100">Si</option
                 >
                 <option
-                  value="entidad_publica"
+                  value="no"
                   class="text-gray-800 bg-gray-100">No</option
                 >
                 <option
-                  value="entidad_publica"
+                  value="no_aplica_No_se"
                   class="text-gray-800 bg-gray-100">No aplica / No sé</option
                 >
               </select>
@@ -295,25 +295,22 @@ import SliceTitulo from "../SliceTitulo.astro";
           <div class="group">
             <div class="relative">
               <select
-                id="tipoEntidad"
-                name="tipoEntidad"
+                id="asistira"
+                name="asistira_todo"
                 required
                 class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
               >
                 <option value="" class="text-gray-800 bg-gray-100"
                   >Seleccionar tipo de entidad</option
                 >
+                <option value="si" class="text-gray-800 bg-gray-100">Si</option>
                 <option
-                  value="empresa_privada"
-                  class="text-gray-800 bg-gray-100">Si</option
-                >
-                <option
-                  value="entidad_publica"
+                  value="solo_el_19_de_noviembre"
                   class="text-gray-800 bg-gray-100"
                   >Solo el 19 de noviembre</option
                 >
                 <option
-                  value="entidad_publica"
+                  value="solo_el_20_de_noviembre"
                   class="text-gray-800 bg-gray-100"
                 >
                   Solo el 20 de noviembre</option
@@ -331,8 +328,8 @@ import SliceTitulo from "../SliceTitulo.astro";
           <div class="group">
             <div class="relative content">
               <select
-                id="tipoEntidad"
-                name="tipoEntidad"
+                id="boletin"
+                name="enviar_info"
                 required
                 class="w-full bg-black/5 dark:bg-white/10 border-2 border-black/20 dark:border-white/30 rounded-xl px-6 py-4 text-black dark:text-white focus:border-blue-500 focus:bg-black/10 dark:focus:bg-white/20 focus:outline-none transition-all duration-300 focus:scale-105 focus:shadow-lg focus:shadow-blue-500/30"
               >
@@ -340,13 +337,12 @@ import SliceTitulo from "../SliceTitulo.astro";
                   >Seleccionar tipo de entidad</option
                 >
                 <option
-                  value="empresa_privada"
+                  value="si_quiero_mantenerme_informado"
                   class="text-gray-800 bg-gray-100"
                   >Sí, quiero mantenerme informado(a)</option
                 >
-                <option
-                  value="entidad_publica"
-                  class="text-gray-800 bg-gray-100">No, gracias</option
+                <option value="no_gracias" class="text-gray-800 bg-gray-100"
+                  >No, gracias</option
                 >
               </select>
               <label
@@ -419,6 +415,67 @@ import SliceTitulo from "../SliceTitulo.astro";
             otroInput.value = "";
           }
         });
+      }
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Mostrar/ocultar campo "Otro"
+      const tipoEntidadSelect = document.getElementById(
+        "tipoEntidad"
+      ) as HTMLSelectElement;
+      const otroDiv = document.getElementById("otroDiv") as HTMLDivElement;
+      const otroInput = document.getElementById(
+        "otroInput"
+      ) as HTMLInputElement;
+
+      if (tipoEntidadSelect && otroDiv && otroInput) {
+        tipoEntidadSelect.addEventListener("change", function () {
+          if (tipoEntidadSelect.value === "otro") {
+            otroDiv.style.display = "block";
+            otroInput.required = true;
+          } else {
+            otroDiv.style.display = "none";
+            otroInput.required = false;
+            otroInput.value = "";
+          }
+        });
+      }
+
+      const form = document.getElementById(
+        "registroForm"
+      ) as HTMLFormElement | null;
+
+      if (form) {
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const formData = new FormData(form);
+          const data = Object.fromEntries(formData.entries());
+
+          try {
+            const res = await fetch("/api/registrar", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(data),
+            });
+
+            const result = await res.json();
+
+            if (result.ok) {
+              // 👈 usa la propiedad que devuelves en registrar.ts
+              alert("✅ Registro guardado correctamente");
+              form.reset(); // ✅ ya no hay error de TS
+            } else {
+              alert("❌ Error al guardar, intente de nuevo");
+            }
+          } catch (error) {
+            console.error(error);
+            alert("❌ Error de conexión con el servidor");
+          }
+        });
+      } else {
+        console.warn("⚠️ No se encontró el formulario con id 'registroForm'");
       }
     });
   </script>
