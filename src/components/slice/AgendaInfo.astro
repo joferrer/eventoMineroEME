@@ -1,0 +1,26 @@
+---
+import AgendaCard from "../AgendaCard.astro";
+import NetworingImage from "../../assets/images/networking.jpeg";
+import AcademicaImage from "../../assets/images/academica.jpg";
+
+---
+
+<section class="dark:bg-[#0f0f1a]">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto gap-4 p-4">
+        <AgendaCard
+            titulo="Escenario Académico 🤓"
+            descripcion="Un espacio único de diálogo técnico y estratégico que impulsa la minería y la energía en Norte de Santander, con foco en sostenibilidad, competitividad y transición energética."
+            imagen={AcademicaImage}
+        />
+        <AgendaCard
+            titulo="Networking 🤝"
+            descripcion={"Conecta con empresarios, proveedores, inversionistas y aliados estratégicos, relacionate y encuentra nuevas oportunidades de negocio en el sector."}
+            imagen={NetworingImage}
+        />
+        <AgendaCard
+            titulo="Experiencias interactivas 🎯"
+            descripcion="Espacios interactivos que te invitan a descubrir el mundo minero y energético de forma sensorial y dinámica, con experiencias, exhibiciones y tecnología aplicada que generan cercanía y recordación."
+            imagen={NetworingImage}
+        />
+    </div>
+</section>

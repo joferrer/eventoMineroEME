@@ -1,0 +1,21 @@
+---
+import { Image } from "astro:assets";
+
+const { titulo, descripcion ,imagen } = Astro.props;
+---
+
+<div class="flex flex-col border border-gray-300 dark:border-gray-500 rounded-lg m-2 dark:bg-[#0f0f1a] dark:text-white shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out relative">
+    <div class="w-full top-0 rounded-t-lg overflow-hidden h-48">
+        {
+            <Image src={imagen} alt={titulo} 
+                class="w-full h-full object-cover"/>
+        }
+    </div>
+    <div class="flex flex-col p-3 w-full">
+        <h5 class="text-2xl font-bold  text-[#2CA4BF]">{titulo}</h5>
+        <p class="mt-2 text-sm font-medium md:text-base leading-relaxed">
+           { descripcion }
+        </p>
+    </div>
+    
+</div>
