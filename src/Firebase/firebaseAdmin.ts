@@ -1,18 +1,12 @@
-// src/Firebase/firebaseAdmin.ts
 import admin from "firebase-admin";
-import { readFileSync } from "fs";
-import { join } from "path";
-
-const serviceAccount = JSON.parse(
-  readFileSync(
-    join(process.cwd(), "serviceAccountKey.json"),
-    "utf8"
-  )
-);
 
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
+    credential: admin.credential.cert({
+      projectId: import.meta.env.FIREBASE_PROJECT_ID,
+      privateKey: import.meta.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
+      clientEmail: import.meta.env.FIREBASE_CLIENT_EMAIL,
+    }),
   });
 }
 
