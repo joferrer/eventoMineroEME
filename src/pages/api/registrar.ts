@@ -1,7 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
-import { db } from "../../Firebase/firebaseAdmin";
+import { db } from "../../firebase/firebaseAdmin";
 
 export const POST: APIRoute = async ({ request }) => {
   try {
