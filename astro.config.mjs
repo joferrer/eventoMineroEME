@@ -8,6 +8,11 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-   output: 'server',
-  adapter: vercel({}),
+  output: 'server',
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+    maxDuration: 8,
+  }),
 });
