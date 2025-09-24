@@ -3,8 +3,8 @@ import { getCollection } from "astro:content";
 import PonenteCard from "../PonenteCard.astro";
 import SliceTitulo from "../SliceTitulo.astro";
 
-const ponentes = await getCollection("ponentes");
-console.log(ponentes);
+const ponentes =  (await getCollection("ponentes")).slice(0, 8);
+
 ---
 
 <section class="p-2 flex flex-col items-center text-center py-8 dark:bg-[#0f0f1a]">
@@ -20,4 +20,5 @@ console.log(ponentes);
             ))
         }
     </div>
+    <p class="text-2xl font-bold mt-3 dark:text-amber-300">¡Y muchos más!</p>
 </section>
