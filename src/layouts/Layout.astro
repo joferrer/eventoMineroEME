@@ -16,7 +16,8 @@ const { title ,description } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/Logo.svg" media="(prefers-color-scheme: light)" />
+		<link rel="icon" type="image/svg+xml" href="/LogoDark.svg" media="(prefers-color-scheme: dark)" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description ?? "El evento minero más importante de Norte de Santander"} />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
