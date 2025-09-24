@@ -1,5 +1,9 @@
-import admin from "firebase-admin";
+// src/Firebase/firebaseAdmin.ts
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const admin = require("firebase-admin");
 
+// inicializar solo una vez
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({

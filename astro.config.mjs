@@ -6,12 +6,15 @@ import vercel from "@astrojs/vercel";
 export default defineConfig({
   output: "server",
   adapter: vercel({
-   imageService: true,
+    imageService: true,
     webAnalytics: {
       enabled: true,
     },
   }),
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      noExternal: ["firebase-admin"],
+    },
   },
 });

@@ -8,12 +8,11 @@ import Contador from "../Contador.astro";
   <Image
     src={LogoVerticalDark}
     alt="Logo del evento minero EME 2025"
-    class="w-1/2 mx-auto my-8 md:w-1/4 lg:w-1/6 transition-transform  duration-500 ease-out hover:scale-105 hover:drop-shadow-md"
+    class="w-1/2 mx-auto my-8 md:w-1/4 lg:w-1/6 transition-transform duration-500 ease-out hover:scale-105 hover:drop-shadow-md"
   />
 
-
-  
   <button
+    id="btnInscribete"
     class="animate-border border-2 rounded-md border-[#034561] px-6 py-3 mx-auto text-xl font-semibold transition-colors duration-1000"
   >
     Inscríbete
@@ -47,3 +46,40 @@ import Contador from "../Contador.astro";
     animation: borderPulse 5s linear infinite;
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const btn = document.getElementById("btnInscribete");
+    const target = document.getElementById("inscripcion");
+
+    function smoothScrollTo(element: HTMLElement, duration: number = 1000) {
+      const targetY = element.getBoundingClientRect().top + window.scrollY;
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      let startTime: number | null = null;
+
+      function easeInOutQuad(t: number): number {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      }
+
+      function step(time: number) {
+        if (startTime === null) startTime = time;
+        const timeElapsed = time - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+        const easedProgress = easeInOutQuad(progress);
+
+        window.scrollTo(0, startY + diff * easedProgress);
+
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    if (btn && target) {
+      btn.addEventListener("click", () => {
+        smoothScrollTo(target, 2000);
+      });
+    }
+  });
+</script>

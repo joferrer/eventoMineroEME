@@ -1,4 +1,4 @@
-import { g as getConfiguredImageService, i as imageConfig, a as isRemoteAllowed, l as lookup } from '../chunks/_astro_assets_qob4-aT_.mjs';
+import { g as getConfiguredImageService, i as imageConfig, a as isRemoteAllowed, l as lookup } from '../chunks/_astro_assets_B6EHsbbC.mjs';
 import { i as isRemotePath } from '../chunks/index_DPYU2bcR.mjs';
 export { renderers } from '../renderers.mjs';
 
@@ -67,7 +67,7 @@ const GET = async ({ request }) => {
       transform,
       imageConfig
     );
-    return new Response(Buffer.from(data), {
+    return new Response(data, {
       status: 200,
       headers: {
         "Content-Type": lookup(format) ?? `image/${format}`,

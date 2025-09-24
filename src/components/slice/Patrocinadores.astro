@@ -1,9 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import LogoVerticalDark from "../../assets/icons/verticales/LogoVerticalDark.png";
+import camara from "../../assets/patrocinadores/CamaraComercio.webp";
+import camaraDark from "../../assets/patrocinadores/CamaraComercioDark.webp";
+import asocarbonor from "../../assets/patrocinadores/Asocarbonor.webp";
+import asocarbonorDark from "../../assets/patrocinadores/AsocarbonorDark.webp";
+import gobernacion from "../../assets/patrocinadores/logoGoberna.webp";
+import gobernacionDark from "../../assets/patrocinadores/logoGobernaDark.webp";
 import SliceTitulo from "../SliceTitulo.astro";
 
-const logos = Array(6).fill(LogoVerticalDark);
+const logos = [
+  { light: camara, dark: camaraDark, alt: "Cámara de Comercio" },
+  { light: asocarbonor, dark: asocarbonorDark, alt: "Asocarbonor" },
+  { light: gobernacion, dark: gobernacionDark, alt: "Gobernación" },
+];
 ---
 
 <!-- Script para detectar el tema -->
@@ -54,28 +63,57 @@ const logos = Array(6).fill(LogoVerticalDark);
 </script>
 
 <section class="patrocinadores">
-
-  <SliceTitulo title="Patrocinadores" subtitle="El Evento EME puede llevarse a cabo gracias a la colaboración de…" />
+  <SliceTitulo
+    title="Patrocinadores"
+    subtitle="El Evento EME puede llevarse a cabo gracias a la colaboración de…"
+  />
 
   <div class="grid">
     {
-      logos.map((logo, index) => (
-        <div class="card">
-          <Image
-            src={logo}
-            alt={`Patrocinador ${index + 1}`}
-            width={80}
-            height={80}
-            fit="contain"
-            loading="lazy"
-          />
-        </div>
+      logos.map((logo) => (
+      <div class="card cursor-pointer">
+  <!-- Logo claro -->
+  <Image
+    src={logo.light}
+    alt={logo.alt}
+    width={200}
+    height={120}
+    fit="contain"
+    loading="lazy"
+    class="block dark:hidden"
+  />
+
+  <!-- Logo oscuro -->
+  <Image
+    src={logo.dark}
+    alt={`${logo.alt} Dark`}
+    width={200}
+    height={120}
+    fit="contain"
+    loading="lazy"
+    class="hidden dark:block"
+  />
+</div>
       ))
     }
   </div>
 </section>
 
+
 <style>
+  .dark-only {
+    display: none;
+  }
+  .light-only {
+    display: grid;
+  }
+
+  :global(.dark) .light-only {
+    display: none;
+  }
+  :global(.dark) .dark-only {
+    display: grid;
+  }
   .patrocinadores {
     padding: 3rem 1rem;
     text-align: center;
@@ -91,14 +129,13 @@ const logos = Array(6).fill(LogoVerticalDark);
     background: #0f0f1a;
     color: white;
   }
-  
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 2rem;
     justify-items: center;
-    max-width: 600px;
-    width: 100%;
+    max-width: 1200px;
   }
 
   .card {
@@ -109,8 +146,8 @@ const logos = Array(6).fill(LogoVerticalDark);
       #ffffff 100%
     );
     padding: 1rem;
-    width: 100px;
-    height: 100px;
+    width: 280px;
+    height: 150px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,15 +158,11 @@ const logos = Array(6).fill(LogoVerticalDark);
         rgba(71, 85, 105, 0)
       )
       1;
-    border-radius: 0;
+    border-radius: 0.5rem;
     box-shadow:
       inset -2px 0 10px rgba(71, 85, 105, 0.05),
       0 2px 4px rgba(0, 0, 0, 0.05);
-    transition:
-      transform 0.3s ease,
-      box-shadow 0.3s ease,
-      border-image-source 0.3s ease,
-      background 0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .dark-theme .card {
@@ -174,16 +207,47 @@ const logos = Array(6).fill(LogoVerticalDark);
       )
       1;
   }
-
+  @media (max-width: 872px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      height: 150px;
+    }
+  }
   @media (max-width: 768px) {
     .grid {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .card {
+      height: 150px;
+    }
+  }
+   @media (max-width: 596px) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .card {
+      height: 100px;
+      max-width: 200px;
+    }
+
+    .patrocinadores {
+      padding: 2rem 1rem;
     }
   }
 
   @media (max-width: 480px) {
     .grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(1, 1fr);
+      gap: 1rem;
+    }
+    .card {
+      height: 100px;
+      max-width: 200px;
     }
 
     .patrocinadores {

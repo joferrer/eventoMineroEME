@@ -1,6 +1,8 @@
-import admin from 'firebase-admin';
+import { createRequire } from 'module';
 export { renderers } from '../../renderers.mjs';
 
+const require = createRequire(import.meta.url);
+const admin = require("firebase-admin");
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
