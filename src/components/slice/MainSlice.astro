@@ -11,12 +11,20 @@ import Contador from "../Contador.astro";
     class="w-1/2 mx-auto my-8 md:w-1/4 lg:w-1/6 transition-transform duration-500 ease-out hover:scale-105 hover:drop-shadow-md"
   />
 
-  <button
-    id="btnInscribete"
-    class="animate-border border-2 rounded-md border-[#034561] px-6 py-3 mx-auto text-xl font-semibold transition-colors duration-1000"
-  >
-    Inscríbete
-  </button>
+  <div class="relative inline-flex w-fit mx-auto mt-4 mb-2 ">
+    <!-- Efecto del borde animado -->
+    <span
+      class="absolute inline-flex h-full w-full rounded-lg border-4 border-[#034561] animate-ping"
+    ></span>
+
+    <!-- El botón real -->
+    <button
+      id="btnInscribete"
+      class="relative px-6 py-3 mx-auto text-2xl font-semibold bg-[#034561] text-white rounded-md cursor-pointer"
+    >
+      ¡Regístrate ya!
+    </button>
+  </div>
   <p class="text-center mt-4 mb-2 text-xl text-white font-medium">
     El evento que conecta a <span class="font-bold text-white">líderes</span>,
     <span class="font-bold text-white">empresas</span> y
