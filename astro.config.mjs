@@ -5,9 +5,6 @@ import vercel from '@astrojs/vercel/serverless';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  },
   output: 'server',
   adapter: vercel({
     webAnalytics: {
@@ -15,4 +12,8 @@ export default defineConfig({
     },
     maxDuration: 8,
   }),
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  
 });
