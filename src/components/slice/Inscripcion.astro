@@ -524,15 +524,18 @@ import sound from "../../assets/sound/Sound.mp3";
           const data = Object.fromEntries(formData.entries());
 
           try {
-            const res = await fetch("/api/registrar", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(data),
-            });
+            const res = await fetch(
+              "https://eventoemeserver-production.up.railway.app/api/inscribirse",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data),
+              }
+            );
 
-            const result: { ok: boolean } = await res.json();
+            const result: { success: boolean } = await res.json();
 
-            if (result.ok) {
+            if (result.success) {
               showToast("✅ Registro guardado correctamente", "success");
               form.reset();
             } else {
