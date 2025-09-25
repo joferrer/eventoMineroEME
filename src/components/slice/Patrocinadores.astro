@@ -9,9 +9,9 @@ import gobernacionDark from "../../assets/patrocinadores/logoGobernaDark.webp";
 import SliceTitulo from "../SliceTitulo.astro";
 
 const logos = [
-  { light: camara, dark: camaraDark, alt: "Cámara de Comercio" },
-  { light: asocarbonor, dark: asocarbonorDark, alt: "Asocarbonor" },
-  { light: gobernacion, dark: gobernacionDark, alt: "Gobernación" },
+  { light: camara, dark: camaraDark, alt: "Cámara de Comercio", link: 'https://www.cccucuta.org.co/' },
+  { light: asocarbonor, dark: asocarbonorDark, alt: "Asocarbonor", link: 'https://www.asocarbonor.org/' },
+  { light: gobernacion, dark: gobernacionDark, alt: "Gobernación" , link: 'https://www.nortedesantander.gov.co/#/inicio'},
 ];
 ---
 
@@ -72,6 +72,7 @@ const logos = [
     {
       logos.map((logo) => (
       <div class="card cursor-pointer">
+      <a href={logo.link} target="_blank" rel="noopener noreferrer">
   <!-- Logo claro -->
   <Image
     src={logo.light}
@@ -93,8 +94,11 @@ const logos = [
     loading="lazy"
     class="hidden dark:block"
   />
+  </a>
 </div>
+
       ))
+      
     }
   </div>
   <div id="inscripcion"/>
