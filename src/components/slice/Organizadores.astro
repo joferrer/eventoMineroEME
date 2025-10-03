@@ -1,11 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import asocarbonor from "../../assets/patrocinadores/Asocarbonor.webp";
-import asocarbonorDark from "../../assets/patrocinadores/AsocarbonorDark.webp";
+import camara from "../../assets/patrocinadores/CamaraComercio.webp";
+import camaraDark from "../../assets/patrocinadores/CamaraComercioDark.webp";
+import gobernacion from "../../assets/patrocinadores/logoGoberna.webp";
+import gobernacionDark from "../../assets/patrocinadores/logoGobernaDark.webp";
 import SliceTitulo from "../SliceTitulo.astro";
 
 const logos = [
-  { light: asocarbonor, dark: asocarbonorDark, alt: "Asocarbonor", link: 'https://www.asocarbonor.org/' },
+  { light: gobernacion, dark: gobernacionDark, alt: "Gobernación" , link: 'https://www.nortedesantander.gov.co/#/inicio'},
+  { light: camara, dark: camaraDark, alt: "Cámara de Comercio", link: 'https://www.cccucuta.org.co/' }
 ];
 ---
 
@@ -26,7 +29,7 @@ const logos = [
   // Aplicar tema al cargar la página
   function applyTheme() {
     const isDark = isDarkMode();
-    const section = document.querySelector(".patrocinadores");
+    const section = document.querySelector(".organizadores");
     if (section) {
       if (isDark) {
         section.classList.add("dark-theme");
@@ -56,17 +59,15 @@ const logos = [
   }
 </script>
 
-<section class="patrocinadores">
+<section class="organizadores">
   <SliceTitulo
-    title="Aliados"
-    subtitle="El Evento EME cuenta con el respaldo de aliados estratégicos que suman esfuerzos para su desarrollo."
-
+    title="Organizadores"
+    subtitle="El Evento EME es posible gracias al compromiso y dedicación de las entidades que lo organizan y hacen realidad."
   />
 
-  <div class="justify-center">
+   <div class="grid">
     {
       logos.map((logo) => (
-      
       <a href={logo.link} target="_blank" rel="noopener noreferrer" class="card cursor-pointer">
   <!-- Logo claro -->
   <Image
@@ -89,14 +90,12 @@ const logos = [
     loading="lazy"
     class="hidden dark:block"
   />
-  </a>
-
+</a>
 
       ))
       
     }
   </div>
-  <div id="inscripcion"/>
 </section>
 
 
@@ -114,7 +113,7 @@ const logos = [
   :global(.dark) .dark-only {
     display: grid;
   }
-  .patrocinadores {
+  .organizadores {
     padding: 3rem 1rem;
     text-align: center;
     background: #f8fafc;
@@ -125,7 +124,7 @@ const logos = [
     transition: all 0.3s ease;
   }
 
-  .patrocinadores.dark-theme {
+  .organizadores.dark-theme {
     background: #0f0f1a;
     color: white;
   }
@@ -235,7 +234,7 @@ const logos = [
       max-width: 200px;
     }
 
-    .patrocinadores {
+    .organizadores {
       padding: 2rem 1rem;
     }
   }
@@ -250,7 +249,7 @@ const logos = [
       max-width: 200px;
     }
 
-    .patrocinadores {
+    .organizadores {
       padding: 2rem 1rem;
     }
   }
