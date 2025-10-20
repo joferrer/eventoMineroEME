@@ -1,0 +1,114 @@
+---
+interface Evento {
+    hora: string;
+    titulo: string;
+    descripcion: string;
+}
+
+const eventosDia1: Evento[] = [
+    {
+        hora: "8:30 AM",
+        titulo: "Inicio del evento y registro",
+        descripcion: "Recoge tu escarapela y kit de bienvenida!",
+    },
+    {
+        hora: "9:00 AM",
+        titulo: "Introducción a la Matriz Energética Nacional",
+        descripcion:
+            "Explora cómo se compone hoy la matriz energética de Colombia y hacia dónde debe evolucionar para responder a los retos del país.",
+    },
+    {
+        hora: "10:00 AM",
+        titulo: "El carbón en cifras (y desde las regiones)",
+        descripcion:
+            "Discusión con líderes del sector sobre los desafíos actuales y futuros en la industria minera y energética.",
+    },
+];
+
+const eventosDia2: Evento[] = [
+    {
+        hora: "8:30 AM",
+        titulo: "Desayuno de networking",
+        descripcion:
+            "Conecta con otros profesionales del sector mientras disfrutas de un desayuno.",
+    },
+    {
+        hora: "9:00 AM",
+        titulo: "Taller práctico: Innovaciones tecnológicas",
+        descripcion:
+            "Participa en un taller interactivo sobre las últimas tecnologías aplicadas a la minería y energía.",
+    },
+    {
+        hora: "10:30 AM",
+        titulo: "Cierre y conclusiones",
+        descripcion: "Resumen de los puntos clave del evento y próximos pasos.",
+    },
+];
+---
+
+<div id="agenda-timeline">
+    <div aria-selected="true" class:list={["hidden aria-selected:block"]}>
+        <ol class="mt-5 relative border-s border-gray-200 dark:border-gray-700">
+            {
+                eventosDia1.map((evento) => (
+                    <li class="mb-5 ms-4">
+                        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                            {evento.hora}
+                        </time>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            {evento.titulo}
+                        </h3>
+                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                            {evento.descripcion}
+                        </p>
+                    </li>
+                ))
+            }
+        </ol>
+    </div>
+    <div class:list={["hidden aria-selected:block"]}>
+        <ol class="mt-5 relative border-s border-gray-200 dark:border-gray-700">
+            {
+                eventosDia2.map((evento) => (
+                    <li class="mb-5 ms-4">
+                        <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -start-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
+                        <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
+                            {evento.hora}
+                        </time>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            {evento.titulo}
+                        </h3>
+                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+                            {evento.descripcion}
+                        </p>
+                    </li>
+                ))
+            }
+        </ol>
+    </div>
+</div>
+
+<script>
+    const agendaTab = document.getElementById("agenda-tab");
+    const agendaButtons = agendaTab?.querySelectorAll("button");
+    const agendaTimeline = document.getElementById("agenda-timeline");
+    const agendaTimelineItems = agendaTimeline?.querySelectorAll(":scope > div");
+    console.log(agendaTimelineItems?.length);
+    let fechaSeleccionada = 0;
+
+    agendaButtons?.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+            fechaSeleccionada = index;
+
+            // Actualizar la visibilidad de los items del timeline
+            agendaTimelineItems?.forEach((item, itemIndex) => {
+                if (itemIndex === fechaSeleccionada) {
+                    item.setAttribute("aria-selected", "true");
+                } else {
+                    item.removeAttribute("aria-selected");
+                }
+            });
+        });
+    });
+</script>

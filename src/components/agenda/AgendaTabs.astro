@@ -1,0 +1,57 @@
+<div id="agenda-tab" class="flex justify-center mt-10" >
+    <ul class="flex gap-2 shadow-md rounded-md overflow-hidden p-1">
+        <li>
+            <button
+                aria-selected="true"
+                class:list={[
+                    "group px-2 py-3 bg-gray-100 flex flex-col items-center rounded-md cursor-pointer transition-all duration-300",
+                    "hover:bg-[#034561] hover:text-white",
+                    "aria-selected:bg-[#034561] aria-selected:text-white aria-selected:scale-105",
+                ]}
+            >
+                <span
+                    class:list={[
+                        "text-5xl font-bold text-[#034561]",
+                        "group-hover:text-amber-300",
+                        "group-aria-selected:text-amber-300 "
+                    ]}>19</span
+                >
+                <span class="text-lg">De Noviembre</span>
+            </button>
+        </li>
+        <li>
+           <button
+                class:list={[
+                    "group px-2 py-3 bg-gray-100 flex flex-col items-center rounded-md cursor-pointer transition-all duration-300",
+                    "hover:bg-[#034561] hover:text-white",
+                    "aria-selected:bg-[#034561] aria-selected:text-white aria-selected:scale-105",
+                ]}
+            >
+                <span
+                    class:list={[
+                        "text-5xl font-bold text-[#034561]",
+                        "group-hover:text-amber-300",
+                        "group-aria-selected:text-amber-300 "
+                    ]}>20</span
+                >
+                <span class="text-lg">De Noviembre</span>
+            </button>
+        </li>
+    </ul>
+</div>
+
+<script>
+    
+    const buttons = document.querySelectorAll('button');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // 1️⃣ Desmarcar todos
+      buttons.forEach(b => b.setAttribute('aria-selected', 'false'));
+      // 2️⃣ Marcar el clicado
+      btn.setAttribute('aria-selected', 'true');
+      
+       
+    });
+  });
+</script>
