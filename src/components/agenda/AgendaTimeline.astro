@@ -8,7 +8,7 @@ interface Evento {
 const eventosDia1: Evento[] = [
     {
         hora: "8:30 AM",
-        titulo: "Inicio del evento y registro",
+        titulo: "Apertura del evento!",
         descripcion: "Recoge tu escarapela y kit de bienvenida!",
     },
     {
@@ -18,10 +18,52 @@ const eventosDia1: Evento[] = [
             "Explora cómo se compone hoy la matriz energética de Colombia y hacia dónde debe evolucionar para responder a los retos del país.",
     },
     {
-        hora: "10:00 AM",
+        hora: "9:40 AM",
         titulo: "El carbón en cifras (y desde las regiones)",
         descripcion:
-            "Discusión con líderes del sector sobre los desafíos actuales y futuros en la industria minera y energética.",
+            "Descubre cómo el carbón impulsa la economía, la energía y el desarrollo de las regiones en tiempos de transición energética.",
+    },
+    {
+        hora: "10:20 AM",
+        titulo: "El carbón: Generador de energía insustituible en Colombia",
+        descripcion:
+            "Explora el papel del carbón en la matriz energética nacional: su aporte a la seguridad, el abastecimiento y la reducción de la pobreza energética en Colombia.",
+    },
+    {
+        hora: "11:00 AM",
+        titulo: "Minería como posibilitador del crecimiento del PIB en Colombia (y desde las regiones)",
+        descripcion:
+            "Conoce cómo la minería regional impulsa empleo, inversión y crecimiento, y las condiciones que pueden potenciar su desarrollo en territorios como Norte de Santander.",
+    },
+    {
+        hora: "11:20 AM",
+        titulo: "El carbón más allá de la energía: El potencial del Grafeno",
+        descripcion:
+            "Descubre el nuevo rostro del carbón: innovación, ciencia y tecnología que transforman este recurso en valor agregado, abriendo mercados y oportunidades para un futuro más sostenible.",
+    },
+    {
+        hora: "11:40 PM",
+        titulo: "RECORRIDO POR EME 2025: Circuito de Networking y Experiencias",
+        descripcion:
+            "",
+    },
+    {
+        hora: "2:30 PM",
+        titulo: "Propuestas para la minería colombiana del presente y futuro",
+        descripcion:
+            "Escucha las propuestas de líderes nacionales sobre el futuro de la minería y la energía: seguridad, desarrollo, sostenibilidad y el rumbo que podría tomar el sector en el próximo gobierno.",
+    },
+    {
+        hora: "3:30 PM",
+        titulo: "Marco Jurídico para una matriz energética segura",
+        descripcion:
+            "Analiza cómo los nuevos proyectos de ley están transformando el marco minero y afectando la seguridad jurídica y energética del país en el contexto de la transición energética.",
+    },
+    {
+        hora: "3:50 PM",
+        titulo: "Abastecimiento y proyectos priorizados",
+        descripcion:
+            "",
     },
 ];
 
@@ -48,7 +90,7 @@ const eventosDia2: Evento[] = [
 
 <div id="agenda-timeline">
     <div aria-selected="true" class:list={["hidden aria-selected:block"]}>
-        <ol class="mt-5 relative border-s border-gray-200 dark:border-gray-700">
+        <ol class="mt-5 relative border-s border-gray-200 dark:border-gray-700 max-h-96 overflow-y-auto">
             {
                 eventosDia1.map((evento) => (
                     <li class="mb-5 ms-4">
