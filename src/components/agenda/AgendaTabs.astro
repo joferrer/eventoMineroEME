@@ -1,0 +1,122 @@
+<section
+  id="agenda-tab"
+  class="relative w-full max-w-5xl mx-auto mt-8 md:mt-16 px-4"
+>
+  <div id="titulo-dia" class="text-center select-none mb-6 md:mb-8">
+    <h3
+      class="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight px-4"
+    >
+      Primer Día del Evento EME
+    </h3>
+  </div>
+
+  <div class="flex items-center justify-center gap-3 md:gap-6 relative">
+    <!-- Botón Izquierdo -->
+    <button
+      data-day="1"
+      aria-selected="true"
+      class="day-button group relative flex flex-col items-center text-center flex-1 max-w-[180px] md:max-w-[200px] px-4 md:px-6 py-5 md:py-6 rounded-2xl transition-all duration-500 cursor-pointer hover:scale-105 active:scale-95 bg-white/90 dark:bg-gray-100 hover:bg-[#034561] aria-selected:bg-[#034561] aria-selected:scale-110 border-2 border-gray-200 dark:border-transparent hover:border-amber-400/50 aria-selected:border-amber-400/50 shadow-lg hover:shadow-xl"
+    >
+      <!-- Halo energético -->
+      <div
+        class="absolute -inset-3 rounded-full bg-amber-400/20 blur-2xl opacity-0 group-aria-selected:opacity-100 transition-opacity duration-700"
+      >
+      </div>
+
+      <span
+        class="relative text-6xl md:text-7xl font-extrabold text-[#034561] group-hover:text-amber-300 group-aria-selected:text-amber-300 transition-all duration-300 drop-shadow-sm"
+        >19</span
+      >
+      <span
+        class="relative text-xs md:text-sm text-[#034561] group-hover:text-white group-aria-selected:text-white mt-1 md:mt-2 uppercase tracking-wide font-medium"
+        >De Noviembre</span
+      >
+    </button>
+
+    <!-- Botón Derecho -->
+    <button
+      data-day="2"
+      aria-selected="false"
+      class="day-button group relative flex flex-col items-center text-center flex-1 max-w-[180px] md:max-w-[200px] px-4 md:px-6 py-5 md:py-6 rounded-2xl transition-all duration-500 cursor-pointer hover:scale-105 active:scale-95 bg-white/90 dark:bg-gray-100 hover:bg-[#034561] aria-selected:bg-[#034561] aria-selected:scale-110 border-2 border-gray-200 dark:border-transparent hover:border-amber-400/50 aria-selected:border-amber-400/50 shadow-lg hover:shadow-xl"
+    >
+      <!-- Halo energético -->
+      <div
+        class="absolute -inset-3 rounded-full bg-amber-400/10 blur-2xl opacity-0 group-aria-selected:opacity-100 transition-opacity duration-700"
+      >
+      </div>
+
+      <span
+        class="relative text-6xl md:text-7xl font-extrabold text-[#034561] group-hover:text-amber-300 group-aria-selected:text-amber-300 transition-all duration-300 drop-shadow-sm"
+        >20</span
+      >
+      <span
+        class="relative text-xs md:text-sm text-[#034561] group-hover:text-white group-aria-selected:text-white mt-1 md:mt-2 uppercase tracking-wide font-medium"
+        >De Noviembre</span
+      >
+    </button>
+  </div>
+
+  <!-- Indicador animado inferior -->
+  <div class="relative w-full max-w-[400px] mx-auto h-[3px] mt-6 md:mt-8">
+    <div
+      class="absolute inset-0 bg-gray-300/50 dark:bg-gray-100/20 rounded-full"
+    >
+    </div>
+    <div
+      id="indicador"
+      class="absolute top-0 left-[calc(25%-35px)] h-full w-[70px] bg-gradient-to-r from-amber-400 to-amber-500 rounded-full transition-all duration-700 ease-out shadow-[0_0_15px_#fbbf24]"
+    >
+    </div>
+  </div>
+</section>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".day-button");
+  const indicador = document.getElementById("indicador");
+  const titulo = document.getElementById("titulo-dia");
+
+  const dayTitles = {
+    1: "Primer Día del Evento EME",
+    2: "Segundo Día del Evento EME",
+  };
+
+  const indicatorPositions = {
+    1: "calc(25% - 35px)",
+    2: "calc(75% - 35px)",
+  };
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const day = btn.dataset.day as "1" | "2";
+
+      // Desactivar todos los botones
+      buttons.forEach((b) => b.setAttribute("aria-selected", "false"));
+
+      // Activar el botón actual
+      btn.setAttribute("aria-selected", "true");
+
+      // Mover el indicador
+      if (indicador) {
+        indicador.style.left = indicatorPositions[day];
+      }
+
+      // Actualizar título con animación suave
+      if (titulo) {
+        titulo.style.opacity = "0";
+        titulo.style.transform = "translateY(-10px)";
+
+        setTimeout(() => {
+          titulo.innerHTML = `<h3 class="text-xl md:text-2xl lg:text-3xl font-extrabold text-gray-900 dark:text-white tracking-tight leading-tight px-4">${dayTitles[day]}</h3>`;
+          titulo.style.opacity = "1";
+          titulo.style.transform = "translateY(0)";
+        }, 200);
+      }
+    });
+  });
+
+  // Aplicar transiciones al título
+  if (titulo) {
+    titulo.style.transition =
+      "opacity 300ms ease-out, transform 300ms ease-out";
+  }
+</script>

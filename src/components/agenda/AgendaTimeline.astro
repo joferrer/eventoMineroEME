@@ -1,0 +1,335 @@
+---
+interface Evento {
+  hora: string;
+  titulo: string;
+  descripcion: string;
+}
+
+const eventosDia1: Evento[] = [
+  {
+    hora: "8:30 AM",
+    titulo: "Apertura del evento!",
+    descripcion: "Recoge tu escarapela y kit de bienvenida!",
+  },
+  {
+    hora: "9:00 AM",
+    titulo: "Introducción a la Matriz Energética Nacional",
+    descripcion:
+      "Explora cómo se compone hoy la matriz energética de Colombia y hacia dónde debe evolucionar para responder a los retos del país.",
+  },
+  {
+    hora: "9:40 AM",
+    titulo: "El carbón en cifras (y desde las regiones)",
+    descripcion:
+      "Descubre cómo el carbón impulsa la economía, la energía y el desarrollo de las regiones en tiempos de transición energética.",
+  },
+  {
+    hora: "10:20 AM",
+    titulo: "El carbón: Generador de energía insustituible en Colombia",
+    descripcion:
+      "Explora el papel del carbón en la matriz energética nacional: su aporte a la seguridad, el abastecimiento y la reducción de la pobreza energética en Colombia.",
+  },
+  {
+    hora: "11:00 AM",
+    titulo:
+      "Minería como posibilitador del crecimiento del PIB en Colombia (y desde las regiones)",
+    descripcion:
+      "Conoce cómo la minería regional impulsa empleo, inversión y crecimiento, y las condiciones que pueden potenciar su desarrollo en territorios como Norte de Santander.",
+  },
+  {
+    hora: "11:20 AM",
+    titulo: "El carbón más allá de la energía: El potencial del Grafeno",
+    descripcion:
+      "Descubre el nuevo rostro del carbón: innovación, ciencia y tecnología que transforman este recurso en valor agregado, abriendo mercados y oportunidades para un futuro más sostenible.",
+  },
+  {
+    hora: "11:40 AM",
+    titulo: "RECORRIDO POR EME 2025: Circuito de Networking y Experiencias",
+    descripcion: "",
+  },
+  {
+    hora: "2:30 PM",
+    titulo: "Propuestas para la minería colombiana del presente y futuro",
+    descripcion:
+      "Escucha las propuestas de líderes nacionales sobre el futuro de la minería y la energía: seguridad, desarrollo, sostenibilidad y el rumbo que podría tomar el sector en el próximo gobierno.",
+  },
+  {
+    hora: "3:30 PM",
+    titulo: "Marco Jurídico para una matriz energética segura",
+    descripcion:
+      "Analiza cómo los nuevos proyectos de ley están transformando el marco minero y afectando la seguridad jurídica y energética del país en el contexto de la transición energética.",
+  },
+  {
+    hora: "3:50 PM",
+    titulo: "Abastecimiento y proyectos priorizados",
+    descripcion: "",
+  },
+];
+
+const eventosDia2: Evento[] = [
+  {
+    hora: "8:00 AM",
+    titulo: "Minería Estratégica para la Competitividad",
+    descripcion:
+      "Descubre la visión técnica y prospectiva que posiciona al carbón y la minería como pilares clave de la competitividad nacional. ¡Inspira tu estrategia empresarial!",
+  },
+  {
+    hora: "8:20 AM",
+    titulo: "La energía que necesita nuestra industria",
+    descripcion:
+      "Analiza la demanda y el consumo futuro de las industrias de Norte de Santander. Identifica la dependencia de fósiles y las oportunidades de transformación energética.",
+  },
+  {
+    hora: "9:00 AM",
+    titulo: "Infraestructura para la competitividad minero energética",
+    descripcion:
+      "Puertos, vías y conexión: La hoja de ruta logística para que el carbón colombiano conquiste nuevos mercados.",
+  },
+  {
+    hora: "10:00 AM",
+    titulo: "Minería de tierras raras (Enfoque Académico)",
+    descripcion: "",
+  },
+  {
+    hora: "11:00 AM",
+    titulo:
+      "Energías Renovables: una apuesta de Colombia a la transición Energética Justa",
+    descripcion: "",
+  },
+  {
+    hora: "11:30 AM",
+    titulo: "Conferencia de clausura",
+    descripcion:
+      "Defiende, gestiona y comunica el valor del carbón. Una conferencia para posicionarlo en la transición energética, desde la seguridad actual hasta las oportunidades del mañana.",
+  },
+];
+---
+
+<div id="agenda-timeline">
+  <div aria-selected="true" class="timeline-day">
+    <ol class="timeline-list">
+      {
+        eventosDia1.map((evento) => (
+          <li class="timeline-item">
+            <div class="evento-time">{evento.hora}</div>
+            <h3 class="evento-titulo">{evento.titulo}</h3>
+            {evento.descripcion && (
+              <p class="evento-descripcion">{evento.descripcion}</p>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+  <div class="timeline-day">
+    <ol class="timeline-list">
+      {
+        eventosDia2.map((evento) => (
+          <li class="timeline-item">
+            <div class="evento-time">{evento.hora}</div>
+            <h3 class="evento-titulo">{evento.titulo}</h3>
+            {evento.descripcion && (
+              <p class="evento-descripcion">{evento.descripcion}</p>
+            )}
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</div>
+
+<style>
+  #agenda-timeline {
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .timeline-day {
+    display: none;
+  }
+
+  .timeline-day[aria-selected="true"] {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .timeline-list {
+    list-style: none;
+    padding-left: 2rem;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 1rem;
+    margin: 0;
+    background-image: linear-gradient(
+      var(--color-primary),
+      var(--color-primary)
+    );
+    background-size: 2px 100%;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item:hover {
+    transform: translateX(5px);
+  }
+
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -2.35rem;
+    top: 0.25rem;
+    width: 12px;
+    height: 12px;
+    background: var(--color-dot-bg);
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    z-index: 1;
+    transition: all 0.3s ease;
+  }
+
+  .timeline-item:hover::before {
+    background: var(--color-primary);
+    box-shadow: 0 0 0 4px var(--color-primary-light);
+  }
+
+  .evento-time {
+    display: inline-block;
+    padding: 0.3rem 0.85rem;
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .evento-titulo {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-text);
+    margin-bottom: 0.45rem;
+    line-height: 1.4;
+  }
+
+  .evento-descripcion {
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    font-size: 0.925rem;
+    margin-bottom: 0;
+  }
+
+  .timeline-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .timeline-list::-webkit-scrollbar-track {
+    background: var(--color-scrollbar-track);
+    border-radius: 10px;
+  }
+
+  .timeline-list::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 10px;
+  }
+
+  .timeline-list::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary-hover);
+  }
+
+  @media (max-width: 640px) {
+    #agenda-timeline {
+      padding: 1rem;
+    }
+
+    .timeline-list {
+      max-height: 400px;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item {
+      padding-left: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .evento-titulo {
+      font-size: 0.95rem;
+    }
+
+    .evento-descripcion {
+      font-size: 0.8rem;
+    }
+  }
+
+  /* 🎨 Tema claro por defecto */
+  :root {
+    --color-primary: #0e7490;
+    --color-primary-hover: #155e75;
+    --color-primary-light: rgba(14, 116, 144, 0.3);
+    --color-bg: #ffffff;
+    --color-text: #1a1a1a;
+    --color-text-muted: #555555;
+    --color-dot-bg: #ffffff;
+    --color-scrollbar-track: #f0f0f0;
+  }
+
+  /* 🌙 Tema oscuro */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #1a1a1a;
+      --color-text: #ffffff;
+      --color-text-muted: #b0b0b0;
+      --color-dot-bg: #1a1a1a;
+      --color-scrollbar-track: #2a2a2a;
+    }
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+</style>
+
+<script>
+  const agendaTab = document.getElementById("agenda-tab");
+  const agendaButtons = agendaTab?.querySelectorAll("button");
+  const agendaTimeline = document.getElementById("agenda-timeline");
+  const agendaTimelineItems = agendaTimeline?.querySelectorAll(":scope > div");
+  let fechaSeleccionada = 0;
+
+  agendaButtons?.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      fechaSeleccionada = index;
+
+      // Actualizar la visibilidad de los items del timeline
+      agendaTimelineItems?.forEach((item, itemIndex) => {
+        if (itemIndex === fechaSeleccionada) {
+          item.setAttribute("aria-selected", "true");
+        } else {
+          item.removeAttribute("aria-selected");
+        }
+      });
+    });
+  });
+</script>

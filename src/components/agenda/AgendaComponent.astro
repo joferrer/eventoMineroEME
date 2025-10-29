@@ -1,0 +1,17 @@
+---
+/**
+ * Este componente agrupa los tabs y la timeline de la agenda. Ambos componentes crean HTMLElements que se comunican mediante atributos aria-selected. Por favor, no eliminar ni modificar dichos atributos sin antes revisar la lógica de comunicación entre ambos componentes.
+ */
+import SliceTitulo from "../SliceTitulo.astro";
+import AgendaTabs from "./AgendaTabs.astro";
+import AgendaTimeline from "./AgendaTimeline.astro";
+---
+
+<div>
+  <SliceTitulo
+    title="Agenda"
+    subtitle="La agenda del Evento EME reúne actividades, ponencias y experiencias diseñadas para impulsar la innovación y la colaboración entre los participantes."
+  />
+  <AgendaTabs />
+  <AgendaTimeline />
+</div>
