@@ -2,10 +2,13 @@
 import { Image } from "astro:assets";
 import camara from "../../assets/patrocinadores/CamaraComercio.webp";
 import camaraDark from "../../assets/patrocinadores/CamaraComercioDark.webp";
+import gase from "../../assets/patrocinadores/gasesDelOriente.webp";
+import gaseDark from "../../assets/patrocinadores/gasesDelOrienteDark.webp";
 import SliceTitulo from "../SliceTitulo.astro";
 
 const logos = [
-  { light: camara, dark: camaraDark, alt: "Cámara de Comercio", link: 'https://www.cccucuta.org.co/' }
+  { light: camara, dark: camaraDark, alt: "Cámara de Comercio", link: 'https://www.cccucuta.org.co/' },
+  { light: gaseDark , dark: gase, alt: "Gases del Oriente", link: 'https://www.gasesdeloriente.com.co/' }
 ];
 ---
 
@@ -63,7 +66,7 @@ const logos = [
 
   />
 
-  <div class="justify-center">
+  <div class="grid">
     {
       logos.map((logo) => (
       

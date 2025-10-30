@@ -1,46 +1,131 @@
 ---
+interface Participante {
+  nombre: string;
+  cargo: string;
+}
+
 interface Evento {
   hora: string;
   titulo: string;
   descripcion: string;
+  participantes?: Participante[];
 }
 
 const eventosDia1: Evento[] = [
   {
-    hora: "8:30 AM",
-    titulo: "Apertura del evento!",
+    hora: "7:00 AM",
+    titulo: "Registro de participantes",
     descripcion: "Recoge tu escarapela y kit de bienvenida!",
   },
   {
+    hora: "8:30 AM",
+    titulo: "¡Apertura del evento!",
+    descripcion: "",
+    participantes: [
+      {
+        nombre: "Ing. William Villamizar Laguado",
+        cargo: "Gobernador de Norte de Santander",
+      },
+      {
+        nombre: "Oscar Ortega",
+        cargo: "Presidente Junta Directiva Asocarbonor",
+      },
+      {
+        nombre: "Arq. Margarita Contreras",
+        cargo: "Gerente Asocarbonor",
+      },
+    ],
+  },
+  {
     hora: "9:00 AM",
-    titulo: "Introducción a la Matriz Energética Nacional",
+    titulo: "Panel Inaugural - Introducción a la Matriz Energética Nacional",
     descripcion:
       "Explora cómo se compone hoy la matriz energética de Colombia y hacia dónde debe evolucionar para responder a los retos del país.",
+    participantes: [
+      {
+        nombre: "Juan Benavides",
+        cargo:
+          "Investigador Fedesarrollo, Miembro Junta Directiva Grupo Bogotá, Asesor de la CREG",
+      },
+      {
+        nombre: "Laura Salazar",
+        cargo: "Líder de Regulación - CEERA",
+      },
+      {
+        nombre: "José Lenin Morrillo",
+        cargo: "Subdirector Demanda UPME",
+      },
+      {
+        nombre: "Francisco Unda",
+        cargo: "Gerente - Seccional Norte de Santander (ANDI)",
+      },
+    ],
   },
   {
     hora: "9:40 AM",
-    titulo: "El carbón en cifras (y desde las regiones)",
+    titulo: "Conferencia - El carbón en cifras (y desde las regiones)",
     descripcion:
       "Descubre cómo el carbón impulsa la economía, la energía y el desarrollo de las regiones en tiempos de transición energética.",
+    participantes: [
+      {
+        nombre: "Amylkar Acosta",
+        cargo: "ExMinistro de Minas",
+      },
+    ],
   },
   {
     hora: "10:20 AM",
-    titulo: "El carbón: Generador de energía insustituible en Colombia",
+    titulo: "Panel - El carbón: Generador de energía insustituible en Colombia",
     descripcion:
       "Explora el papel del carbón en la matriz energética nacional: su aporte a la seguridad, el abastecimiento y la reducción de la pobreza energética en Colombia.",
+    participantes: [
+      {
+        nombre: "Camilo Jaramillo",
+        cargo: "Fundador - Hybritec",
+      },
+      {
+        nombre: "Anrea Beleño Hernández",
+        cargo: "Directora Técnica y Regulación - ANDEG",
+      },
+      {
+        nombre: "José David Montoya",
+        cargo: "Presidente TERMOTASAJERO",
+      },
+      {
+        nombre: "Carlos Cante",
+        cargo: "Presidente Ejecutivo - FENALCARBÓN",
+      },
+      {
+        nombre: "Margarita Contreras",
+        cargo: "Gerente - AsoCarbonor",
+      },
+    ],
   },
   {
     hora: "11:00 AM",
     titulo:
-      "Minería como posibilitador del crecimiento del PIB en Colombia (y desde las regiones)",
+      "Conferencia - Minería como posibilitador del crecimiento del PIB en Colombia (y desde las regiones)",
     descripcion:
       "Conoce cómo la minería regional impulsa empleo, inversión y crecimiento, y las condiciones que pueden potenciar su desarrollo en territorios como Norte de Santander.",
+    participantes: [
+      {
+        nombre: "José Esteban Bello",
+        cargo: "Docente UNAL y Consultor Empresas Mineras Antioqueñas",
+      },
+    ],
   },
   {
     hora: "11:20 AM",
-    titulo: "El carbón más allá de la energía: El potencial del Grafeno",
+    titulo:
+      "Conferencia - El carbón más allá de la energía: El potencial del Grafeno",
     descripcion:
       "Descubre el nuevo rostro del carbón: innovación, ciencia y tecnología que transforman este recurso en valor agregado, abriendo mercados y oportunidades para un futuro más sostenible.",
+    participantes: [
+      {
+        nombre: "Gabriel Peña",
+        cargo: "Docente UFPS, Investigador Senior",
+      },
+    ],
   },
   {
     hora: "11:40 AM",
@@ -49,60 +134,204 @@ const eventosDia1: Evento[] = [
   },
   {
     hora: "2:30 PM",
-    titulo: "Propuestas para la minería colombiana del presente y futuro",
+    titulo:
+      "Panel Líderes Nacionales - Propuestas para la minería colombiana del presente y futuro",
     descripcion:
       "Escucha las propuestas de líderes nacionales sobre el futuro de la minería y la energía: seguridad, desarrollo, sostenibilidad y el rumbo que podría tomar el sector en el próximo gobierno.",
+    participantes: [
+      {
+        nombre: "Paloma Valencia",
+        cargo: "",
+      },
+      {
+        nombre: "Mauricio Cárdenas",
+        cargo: "",
+      },
+      {
+        nombre: "Juan Manuel Galán",
+        cargo: "",
+      },
+      {
+        nombre: "Juan Carlos Pinzon",
+        cargo: "",
+      },
+      {
+        nombre: "Claudia López",
+        cargo: "",
+      },
+      {
+        nombre: "Esmeralda Rojas",
+        cargo: "Directora del Servicio Informativo Caracol Norte de Santander",
+      },
+    ],
   },
   {
     hora: "3:30 PM",
     titulo: "Marco Jurídico para una matriz energética segura",
     descripcion:
-      "Analiza cómo los nuevos proyectos de ley están transformando el marco minero y afectando la seguridad jurídica y energética del país en el contexto de la transición energética.",
+      "Conferencia - Analiza cómo los nuevos proyectos de ley están transformando el marco minero y afectando la seguridad jurídica y energética del país en el contexto de la transición energética.",
+    participantes: [
+      {
+        nombre: "Adriana Martínez",
+        cargo: "Presidente de Martínez Córdoba & Abogados Asociados",
+      },
+    ],
   },
   {
     hora: "3:50 PM",
-    titulo: "Abastecimiento y proyectos priorizados",
+    titulo: "Conferencia - Abastecimiento y proyectos priorizados",
     descripcion: "",
+    participantes: [
+      {
+        nombre: "Luz Stella Murgas",
+        cargo: "Presidenta Asociación Colombiana de Gas Natural NATURGAS",
+      },
+    ],
   },
 ];
 
 const eventosDia2: Evento[] = [
   {
+    hora: "7:00 AM",
+    titulo: "Registro de participantes",
+    descripcion: "Recoge tu escarapela y kit de bienvenida!",
+  },
+  {
     hora: "8:00 AM",
-    titulo: "Minería Estratégica para la Competitividad",
+    titulo: "Conferencia - Competitividad",
     descripcion:
-      "Descubre la visión técnica y prospectiva que posiciona al carbón y la minería como pilares clave de la competitividad nacional. ¡Inspira tu estrategia empresarial!",
+      "Inspirar a los empresarios sobre el papel estratégico del carbón y la industria extractiva en la competitividad nacional, promoviendo una visión técnica y articulada desde los territorios.",
+    participantes: [
+      {
+        nombre: "Daniel Gómez Gaviria",
+        cargo: "Vicepresidente Consejo Privado de Competitividad ",
+      },
+    ],
   },
   {
     hora: "8:20 AM",
-    titulo: "La energía que necesita nuestra industria",
+    titulo: "Panel - La energía que necesita nuestra industria",
     descripcion:
       "Analiza la demanda y el consumo futuro de las industrias de Norte de Santander. Identifica la dependencia de fósiles y las oportunidades de transformación energética.",
+    participantes: [
+      {
+        nombre: "Raimundo Cáceres",
+        cargo: "Gerente General - CORPOLAVI ",
+      },
+      {
+        nombre: "Sonia Lizarazo",
+        cargo:
+          "Coordinadora de Innovación, Desarrollo y Calidad - Ladrillera Casa Blanca",
+      },
+      {
+        nombre: "Fabio Ardila",
+        cargo: "Gerente - Preconcretos",
+      },
+      {
+        nombre: "David Ararat",
+        cargo: " Presidente - Cerámica Italia",
+      },
+      {
+        nombre: "José Miguel González",
+        cargo: "Gerente - CENS EPM",
+      },
+    ],
   },
   {
     hora: "9:00 AM",
-    titulo: "Infraestructura para la competitividad minero energética",
+    titulo: "Panel - Infraestructura para la competitividad minero energética",
     descripcion:
       "Puertos, vías y conexión: La hoja de ruta logística para que el carbón colombiano conquiste nuevos mercados.",
+    participantes: [
+      {
+        nombre: "Andrés López",
+        cargo: "Gerente Agenciamiento Marítimo - Transmares",
+      },
+      {
+        nombre: "José Luis Cala",
+        cargo: "Gerente Transporte y Movilidad - Findeter",
+      },
+      {
+        nombre: "Leonel Valero Escalante",
+        cargo: "Director Territorial INVIAS Norte de Santander",
+      },
+      {
+        nombre: "Julio Mario Villamizar",
+        cargo: "Presidente - Sociedad Colombiana de Ingenieros (SCI)",
+      },
+    ],
+  },
+  {
+    hora: "9:40 AM",
+    titulo: "Conferencia - Sostenibilidad",
+    descripcion: "",
+    participantes: [
+      {
+        nombre: "Santiago Reyes",
+        cargo: "Director de Gestión Integral y Sostenibilidad TGI",
+      },
+    ],
   },
   {
     hora: "10:00 AM",
-    titulo: "Minería de tierras raras (Enfoque Académico)",
+    titulo: "Panel - Minería de tierras raras (Enfoque Académico)",
     descripcion: "",
+    participantes: [
+      {
+        nombre: "Oscar Jaimes Restrepo",
+        cargo:
+          "Docente, Departamento de Materiales y Minerales en la Universidad Nacional de Colombia",
+      },
+      {
+        nombre: "Oswaldo Bustamante",
+        cargo: "Docente, Universidad Nacional de Colombia - Sede Medellín",
+      },
+      {
+        nombre: "Giovanny Franco Sepúlveda",
+        cargo:
+          "Exviceministro de minas y energía, Director Grupo de Planeamiento Minero GIPLAMIN.",
+      },
+      {
+        nombre: "Juan Camilo Nariño Acoser",
+        cargo: "Presidente ACM",
+      },
+    ],
   },
   {
     hora: "11:00 AM",
     titulo:
-      "Energías Renovables: una apuesta de Colombia a la transición Energética Justa",
+      "Conferencia - Energías Renovables: una apuesta de Colombia a la transición Energética Justa",
     descripcion: "",
+    participantes: [
+      {
+        nombre: "Edgar Perez",
+        cargo: "Petrofísico en Ecopetrol.",
+      },
+    ],
   },
   {
     hora: "11:30 AM",
     titulo: "Conferencia de clausura",
     descripcion:
       "Defiende, gestiona y comunica el valor del carbón. Una conferencia para posicionarlo en la transición energética, desde la seguridad actual hasta las oportunidades del mañana.",
+    participantes: [
+      {
+        nombre: "Margarita Contreras",
+        cargo: "Gerente Asocarbonor",
+      },
+    ],
   },
 ];
+
+// Función para obtener las iniciales de un nombre
+function getInitials(name: string): string {
+  return name
+    .split(" ")
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase()
+    .slice(0, 2);
+}
 ---
 
 <div id="agenda-timeline">
@@ -115,6 +344,41 @@ const eventosDia2: Evento[] = [
             <h3 class="evento-titulo">{evento.titulo}</h3>
             {evento.descripcion && (
               <p class="evento-descripcion">{evento.descripcion}</p>
+            )}
+            {evento.participantes && evento.participantes.length > 0 && (
+              <div class="participantes-container">
+                <div class="participantes-header">
+                  <svg
+                    class="icon-participantes"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                  <span class="participantes-label">Participantes</span>
+                </div>
+                <div class="participantes-list">
+                  {evento.participantes.map((participante) => (
+                    <div class="participante-badge">
+                      <div class="participante-avatar">
+                        {getInitials(participante.nombre)}
+                      </div>
+                      <span class="participante-nombre">
+                        {participante.nombre}
+                      </span>
+                      <div class="participante-tooltip">
+                        <div class="tooltip-nombre">{participante.nombre}</div>
+                        <div class="tooltip-cargo">{participante.cargo}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             )}
           </li>
         ))
@@ -131,6 +395,41 @@ const eventosDia2: Evento[] = [
             {evento.descripcion && (
               <p class="evento-descripcion">{evento.descripcion}</p>
             )}
+            {evento.participantes && evento.participantes.length > 0 && (
+              <div class="participantes-container">
+                <div class="participantes-header">
+                  <svg
+                    class="icon-participantes"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                  <span class="participantes-label">Participantes</span>
+                </div>
+                <div class="participantes-list">
+                  {evento.participantes.map((participante) => (
+                    <div class="participante-badge">
+                      <div class="participante-avatar">
+                        {getInitials(participante.nombre)}
+                      </div>
+                      <span class="participante-nombre">
+                        {participante.nombre}
+                      </span>
+                      <div class="participante-tooltip">
+                        <div class="tooltip-nombre">{participante.nombre}</div>
+                        <div class="tooltip-cargo">{participante.cargo}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </li>
         ))
       }
@@ -141,7 +440,7 @@ const eventosDia2: Evento[] = [
 <style>
   #agenda-timeline {
     padding: 1rem;
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
   }
 
@@ -170,6 +469,7 @@ const eventosDia2: Evento[] = [
     padding-left: 2rem;
     max-height: 550px;
     overflow-y: auto;
+    overflow-x: hidden;
     padding-right: 1rem;
     margin: 0;
     background-image: linear-gradient(
@@ -179,6 +479,7 @@ const eventosDia2: Evento[] = [
     background-size: 2px 100%;
     background-repeat: no-repeat;
     background-position: 0 0;
+    width: 100%;
   }
 
   .timeline-item {
@@ -237,7 +538,144 @@ const eventosDia2: Evento[] = [
     color: var(--color-text-muted);
     line-height: 1.6;
     font-size: 0.925rem;
-    margin-bottom: 0;
+    margin-bottom: 0.75rem;
+  }
+
+  /* 🎭 Estilos para participantes */
+  .participantes-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-participantes-bg);
+    border-radius: 12px;
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .participantes-header {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  .icon-participantes {
+    width: 18px;
+    height: 18px;
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .participantes-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .participantes-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex: 1;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .participante-badge {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--color-badge-bg);
+    padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+    border-radius: 20px;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-badge-border);
+    cursor: pointer;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .participante-badge:hover {
+    background: var(--color-primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(14, 116, 144, 0.2);
+    z-index: 10;
+  }
+
+  .participante-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+  }
+
+  .participante-nombre {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  /* 💬 Tooltip elegante */
+  .participante-tooltip {
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%) translateY(5px);
+    background: var(--color-tooltip-bg);
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    min-width: 250px;
+    max-width: 350px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-tooltip-border);
+  }
+
+  .participante-tooltip::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 8px solid transparent;
+    border-top-color: var(--color-tooltip-bg);
+  }
+
+  .participante-badge:hover .participante-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .tooltip-nombre {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--color-text);
+    margin-bottom: 0.35rem;
+  }
+
+  .tooltip-cargo {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
   }
 
   .timeline-list::-webkit-scrollbar {
@@ -280,18 +718,56 @@ const eventosDia2: Evento[] = [
     .evento-descripcion {
       font-size: 0.8rem;
     }
+
+    .participantes-container {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .participantes-header {
+      margin-bottom: 0.25rem;
+    }
+
+    .participante-badge {
+      font-size: 0.8rem;
+    }
+
+    .participante-nombre {
+      font-size: 0.8rem;
+    }
+
+    .participante-tooltip {
+      min-width: 200px;
+      max-width: 280px;
+      left: 0;
+      transform: translateX(0) translateY(5px);
+    }
+
+    .participante-badge:hover .participante-tooltip {
+      transform: translateX(0) translateY(0);
+    }
+
+    .participante-tooltip::before {
+      left: 20px;
+      transform: translateX(0);
+    }
   }
 
   /* 🎨 Tema claro por defecto */
   :root {
     --color-primary: #0e7490;
     --color-primary-hover: #155e75;
-    --color-primary-light: rgba(14, 116, 144, 0.3);
+    --color-primary-light: rgba(14, 116, 144, 0.15);
     --color-bg: #ffffff;
     --color-text: #1a1a1a;
     --color-text-muted: #555555;
     --color-dot-bg: #ffffff;
     --color-scrollbar-track: #f0f0f0;
+    --color-participantes-bg: #f0f9ff;
+    --color-badge-bg: #ffffff;
+    --color-badge-border: #e0e0e0;
+    --color-tooltip-bg: rgba(255, 255, 255, 0.98);
+    --color-tooltip-border: rgba(14, 116, 144, 0.2);
   }
 
   /* 🌙 Tema oscuro */
@@ -302,6 +778,11 @@ const eventosDia2: Evento[] = [
       --color-text-muted: #b0b0b0;
       --color-dot-bg: #1a1a1a;
       --color-scrollbar-track: #2a2a2a;
+      --color-participantes-bg: rgba(14, 116, 144, 0.1);
+      --color-badge-bg: #2a2a2a;
+      --color-badge-border: #3a3a3a;
+      --color-tooltip-bg: rgba(42, 42, 42, 0.98);
+      --color-tooltip-border: rgba(14, 116, 144, 0.3);
     }
   }
 
