@@ -4,11 +4,22 @@ import camara from "../../assets/patrocinadores/CamaraComercio.webp";
 import camaraDark from "../../assets/patrocinadores/CamaraComercioDark.webp";
 import gase from "../../assets/patrocinadores/gasesDelOriente.webp";
 import gaseDark from "../../assets/patrocinadores/gasesDelOrienteDark.webp";
+import cooprocarcegua from "../../assets/patrocinadores/COOPROCARCEGUA.webp";
+import cens from "../../assets/patrocinadores/CENS.webp";
+import termotasajero from "../../assets/patrocinadores/TERMOTASAJERO.webp";
+import comfaoriente from "../../assets/patrocinadores/Comfaoriente.webp";
 import SliceTitulo from "../SliceTitulo.astro";
+import termotasajeroDark from "../../assets/patrocinadores/TERMOTASAJEROdark.webp";
+import censDark from "../../assets/patrocinadores/CENSdark.webp";
+
 
 const logos = [
   { light: camara, dark: camaraDark, alt: "Cámara de Comercio", link: 'https://www.cccucuta.org.co/' },
-  { light: gaseDark , dark: gase, alt: "Gases del Oriente", link: 'https://www.gasesdeloriente.com.co/' }
+  { light: gaseDark , dark: gase, alt: "Gases del Oriente", link: 'https://www.gasesdeloriente.com.co/' },
+  { light: cooprocarcegua, dark: cooprocarcegua, alt: "COOPROCARCEGUA", link: 'https://www.cooprocarcegua.com/' },
+  { light: cens, dark: censDark, alt: "CENS", link: 'https://www.cens.com.co/' },
+  { light: termotasajero, dark: termotasajeroDark, alt: "Termotasajero", link: 'https://www.termotasajero.com.co/' },
+  { light: comfaoriente, dark: comfaoriente, alt: "Comfaoriente", link: 'https://www.comfaoriente.com.co/' }
 ];
 ---
 
@@ -135,7 +146,7 @@ const logos = [
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     justify-items: center;
     max-width: 1200px;
@@ -210,7 +221,7 @@ const logos = [
       )
       1;
   }
-  @media (max-width: 872px) {
+  @media (max-width: 970px) {
     .grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
