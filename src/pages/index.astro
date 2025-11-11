@@ -11,42 +11,43 @@ import Footer from "../components/Footer.astro";
 import AgendaInfo from "../components/slice/AgendaInfo.astro";
 import Agenda from "../components/slice/Agenda.astro";
 import Organizadores from "../components/slice/Organizadores.astro";
-
+import UbicacionFlotante from "../components/UbicacionFlotante.astro";
 ---
 
 <Layout title="Evento Minero EME 2025">
-	<div class="relative min-h-fit overflow-hidden">
-		<div
-			class="absolute w-full h-full bg-center bg-no-repeat bg-cover -z-10 bg-zoom"
-			style={`background-image: url(${CarborBg.src});`}
-		>
-		</div>
-		<MainSlice />
-	</div>
-	<EventoInfo	/>
-	<AgendaInfo />
-	<Agenda />
-	<Ponentes />
-	<Organizadores />
-	<Patrocinadores />
-	<Inscripcion />
-	<Footer />
+  <div class="relative min-h-fit overflow-hidden">
+    <div
+      class="absolute w-full h-full bg-center bg-no-repeat bg-cover -z-10 bg-zoom"
+      style={`background-image: url(${CarborBg.src});`}
+    >
+    </div>
+    <MainSlice />
+  </div>
+  <EventoInfo />
+  <AgendaInfo />
+  <Agenda />
+  <Ponentes />
+  <Organizadores />
+  <Patrocinadores />
+  <Inscripcion />
+  <UbicacionFlotante />
+  <Footer />
 </Layout>
 
 <style>
-	@layer utilities {
-		.bg-zoom {
-			background-size: 400%;
-		}
-		@media (min-width: 720px) {
-			.bg-zoom {
-				background-size: 200%;
-			}
-		}
-		@media (min-width: 896px) {
-			.bg-zoom {
-				background-size: 150%;
-			}
-		}
-	}
+  @layer utilities {
+    .bg-zoom {
+      background-size: 400%;
+    }
+    @media (min-width: 720px) {
+      .bg-zoom {
+        background-size: 200%;
+      }
+    }
+    @media (min-width: 896px) {
+      .bg-zoom {
+        background-size: 150%;
+      }
+    }
+  }
 </style>
