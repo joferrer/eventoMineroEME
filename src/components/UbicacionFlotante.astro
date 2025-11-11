@@ -1,0 +1,929 @@
+---
+// Componente: FloatingLocationModal.astro
+// src/components/FloatingLocationModal.astro
+
+import logo from "../assets/icons/horizontales/LogoHorizontalDark.png";
+import waze from "../assets/icons/waze-icon.png";
+import maps from "../assets/icons/google-map-icon.png";
+
+const ubicacion = {
+  nombre: "Hotel Holiday Inn",
+  direccion: "Avenida 0, Calle 10",
+  ciudad: "Cúcuta, Norte de Santander",
+  fecha: "19 y 20 de Diciembre 2025",
+  coordenadas: "7.886843,-72.496492",
+  coordenadasEncoded: "7.886843%2C-72.496492",
+  placeName: "Hotel+Holiday+Inn+Cucuta",
+  mapEmbed:
+    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.7!2d-72.496492!3d7.886843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6645a004b44fbd%3A0xfae38f475ff8bd0b!2sHotel%20Holiday%20Inn!5e0!3m2!1ses!2sco!4v1731276000000!5m2!1ses!2sco",
+};
+---
+
+<button
+  id="locationBtn"
+  class="floating-location-btn"
+  aria-label="Ver ubicación del evento"
+>
+  <div class="btn-inner">
+    <svg
+      class="icon-pin"
+      xmlns="http://www.w3.org/2000/svg"
+      width="28"
+      height="28"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+      <circle cx="12" cy="10" r="3"></circle>
+    </svg>
+    <div class="pulse-ring"></div>
+    <div class="pulse-ring-2"></div>
+  </div>
+
+  <!-- Flecha animada llamativa -->
+  <div class="attention-arrow">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="32"
+      height="32"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M7 13l5 5 5-5M7 6l5 5 5-5"></path>
+    </svg>
+  </div>
+
+  <!-- Texto animado "¡Mira aquí!" -->
+  <div class="attention-text">¡Ubicación!</div>
+
+  <span class="tooltip">📍 Ver Ubicación del Evento EME</span>
+</button>
+
+<div id="locationModal" class="modal">
+  <div class="modal-overlay"></div>
+  <div class="modal-content">
+    <button class="close-btn" id="closeModal">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+
+    <div class="modal-header">
+      <img src={logo.src} alt="Logo" class="header-logo" />
+
+      <div class="header-icon">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+      </div>
+      <h3>Ubicación del Evento</h3>
+      <p class="subtitle">Encuentro Minero Energético 2025</p>
+    </div>
+
+    <div class="modal-body">
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="card-icon">🏢</div>
+          <div class="card-content">
+            <strong>Lugar</strong>
+            <p>{ubicacion.nombre}</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon">📍</div>
+          <div class="card-content">
+            <strong>Dirección</strong>
+            <p>{ubicacion.direccion}</p>
+            <p class="city">{ubicacion.ciudad}</p>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon">📅</div>
+          <div class="card-content">
+            <strong>Fecha</strong>
+            <p>{ubicacion.fecha}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-section">
+        <div class="map-header">
+          <h4>🗺️ Mapa Interactivo</h4>
+        </div>
+        <div class="map-container">
+          <iframe
+            src={ubicacion.mapEmbed}
+            width="100%"
+            height="400"
+            style="border:0; border-radius: 12px;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <a
+        href={`https://www.google.com/maps/dir/?api=1&destination=${ubicacion.coordenadas}&destination_place_id=ChIJvU-0BKBFZo4RC9345EdfjvQ`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-google"
+        ><img src={maps.src} alt="Google Maps Logo" width="30" height="30" />
+        <span>Cómo llegar en Google Maps</span>
+      </a>
+      <a
+        href={`https://waze.com/ul?ll=${ubicacion.coordenadas}&navigate=yes&zoom=17`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-waze"
+        ><img src={waze.src} alt="Waze Logo" width="30" height="30" />
+        <span>Navegar con Waze</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Botón Flotante Ultra Llamativo */
+  .floating-location-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(
+      135deg,
+      #ff6b6b 0%,
+      #ee5a6f 25%,
+      #c44569 75%,
+      #556270 100%
+    );
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 1000;
+    border: none;
+    box-shadow:
+      0 8px 25px rgba(255, 107, 107, 0.5),
+      0 0 0 0 rgba(255, 107, 107, 0.7);
+  }
+
+  .btn-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-pin {
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .pulse-ring,
+  .pulse-ring-2 {
+    position: absolute;
+    border: 3px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    animation: pulse 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+  }
+
+  .pulse-ring-2 {
+    animation-delay: 1s;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .floating-location-btn:hover {
+    transform: translateY(-8px) scale(1.1) rotate(5deg);
+    box-shadow:
+      0 15px 40px rgba(255, 107, 107, 0.7),
+      0 0 0 8px rgba(255, 107, 107, 0.1);
+  }
+
+  .floating-location-btn:active {
+    transform: translateY(-4px) scale(1.05);
+  }
+
+  .tooltip {
+    position: absolute;
+    right: 85px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+  }
+
+  .tooltip::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #8000ff;
+  }
+
+  .floating-location-btn:hover .tooltip {
+    opacity: 1;
+    right: 90px;
+  }
+
+  /* Flecha de atención animada */
+  .attention-arrow {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounceArrow 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 4px 12px rgba(255, 215, 0, 0.8));
+    cursor: pointer;
+  }
+
+  .attention-arrow svg {
+    stroke: #ffd700;
+    animation: glowArrow 1.5s ease-in-out infinite;
+  }
+
+  .modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+    padding: 0;
+    border-radius: 24px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow:
+      0 25px 80px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 2001;
+  }
+
+  @keyframes bounceArrow {
+    0%,
+    100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    50% {
+      transform: translateX(-50%) translateY(10px);
+    }
+  }
+
+  @keyframes glowArrow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+    }
+    50% {
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+    }
+  }
+
+  /* Texto animado de atención */
+  .attention-text {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+    color: #1a1a2e;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 800;
+    white-space: nowrap;
+    animation: wiggle 1s ease-in-out infinite;
+    box-shadow:
+      0 4px 20px rgba(255, 215, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+  }
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: translateX(-50%) rotate(-5deg);
+    }
+    25% {
+      transform: translateX(-50%) rotate(5deg);
+    }
+    50% {
+      transform: translateX(-50%) rotate(-5deg);
+    }
+    75% {
+      transform: translateX(-50%) rotate(5deg);
+    }
+  }
+
+  /* Ocultar animaciones en hover y cuando el modal está activo */
+  .floating-location-btn:hover .attention-arrow,
+  .floating-location-btn:hover .attention-text,
+  .floating-location-btn.hide-attention .attention-arrow,
+  .floating-location-btn.hide-attention .attention-text {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Modal Premium */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(26, 26, 46, 0.95) 0%,
+      rgba(22, 33, 62, 0.95) 100%
+    );
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.3s ease;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .modal-content {
+    position: relative;
+    background: linear-gradient(135deg, #1e1e2e 0%, #2a2a3e 100%);
+    padding: 0;
+    border-radius: 24px;
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow:
+      0 25px 80px rgba(0, 0, 0, 0.6),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+    animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 2001;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(100px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: white;
+  }
+
+  .close-btn:hover {
+    background: rgba(255, 107, 107, 0.9);
+    transform: rotate(90deg);
+  }
+
+  .modal-header {
+    text-align: center;
+    padding: 40px 30px 30px;
+    background: linear-gradient(135deg, #4463ec 0%, #0d0f42 100%);
+    border-radius: 24px 24px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .modal-header::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+      45deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+
+  .header-icon {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .modal-header h3 {
+    font-size: 32px;
+    margin: 0 0 10px;
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin: 0;
+  }
+
+  /* Cuerpo del Modal */
+  .modal-body {
+    padding: 0;
+  }
+
+  /* Cards en una sola fila */
+  .info-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px;
+  }
+
+  .info-card {
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.1) 0%,
+      rgba(118, 75, 162, 0.1) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 24px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+  }
+
+  .info-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(102, 126, 234, 0.2) 0%,
+      rgba(118, 75, 162, 0.2) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .info-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+    border-color: rgba(102, 126, 234, 0.3);
+  }
+
+  .info-card:hover::before {
+    opacity: 1;
+  }
+
+  .card-icon {
+    font-size: 42px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .card-content strong {
+    color: #667eea;
+    display: block;
+    margin-bottom: 10px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+  }
+
+  .card-content p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 600;
+  }
+
+  .card-content .city {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* Sección del Mapa */
+  .map-section {
+    padding: 0 30px 30px;
+  }
+
+  .map-header {
+    margin-bottom: 20px;
+  }
+
+  .map-header h4 {
+    color: white;
+    font-size: 22px;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .map-container {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 12px 45px rgba(0, 0, 0, 0.4);
+    border: 2px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .map-container:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+    box-shadow: 0 16px 60px rgba(102, 126, 234, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 0 30px 30px;
+  }
+
+  .btn {
+    padding: 18px 26px;
+    border-radius: 14px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition:
+      width 0.6s,
+      height 0.6s;
+  }
+
+  .btn:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  .btn svg {
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .btn span {
+    position: relative;
+    z-index: ;
+  }
+
+  .btn-google {
+    background: linear-gradient(135deg, #ffb3b3 0%, #ff0000 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(66, 133, 244, 0.3);
+  }
+
+  .btn-waze {
+    background: linear-gradient(135deg, #33ccff 0%, #00b4d8 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(51, 204, 255, 0.3);
+  }
+
+  .btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(66, 133, 244, 0.5);
+  }
+
+  .btn-waze:hover {
+    box-shadow: 0 10px 30px rgba(51, 204, 255, 0.5);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .floating-location-btn {
+      bottom: 20px;
+      right: 20px;
+      width: 56px;
+      height: 56px;
+    }
+
+    .icon-pin {
+      width: 24px;
+      height: 24px;
+    }
+
+    .tooltip {
+      display: none;
+    }
+
+    /* Ajustar animaciones de atención en móvil */
+    .attention-arrow {
+      top: -50px;
+    }
+
+    .attention-arrow svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .attention-text {
+      top: -85px;
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+
+    .modal-content {
+      width: 95%;
+      max-height: 95vh;
+    }
+
+    .modal-header {
+      padding: 30px 20px 20px;
+    }
+
+    .modal-header h3 {
+      font-size: 24px;
+    }
+
+    .header-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .info-cards {
+      grid-template-columns: 1fr;
+      padding: 20px;
+      gap: 15px;
+    }
+
+    .info-card {
+      padding: 20px;
+    }
+
+    .card-icon {
+      font-size: 36px;
+    }
+
+    .card-content p {
+      font-size: 15px;
+    }
+
+    .map-section {
+      padding: 0 20px 20px;
+    }
+
+    .map-header h4 {
+      font-size: 19px;
+    }
+
+    .map-container iframe {
+      height: 280px;
+    }
+
+    .action-buttons {
+      grid-template-columns: 1fr;
+      padding: 0 20px 20px;
+      gap: 12px;
+    }
+
+    .btn {
+      padding: 14px 20px;
+      font-size: 13px;
+    }
+  }
+
+  /* Scroll suave para el modal - ESTILIZADO */
+
+  .modal-content::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin: 10px 0;
+  }
+  .modal-content::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+  }
+
+  .modal-content::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #7c8ef7 0%, #8b5ab5 100%);
+    box-shadow:
+      inset 0 0 8px rgba(0, 0, 0, 0.6),
+      0 0 12px rgba(102, 126, 234, 0.6);
+  }
+
+  .modal-content::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(180deg, #5a6fd8 0%, #663d8c 100%);
+  }
+</style>
+
+<script>
+  const locationBtn = document.getElementById("locationBtn");
+  const modal = document.getElementById("locationModal");
+  const closeBtn = document.getElementById("closeModal");
+
+  locationBtn?.addEventListener("click", () => {
+    modal?.classList.add("active");
+    locationBtn?.classList.add("hide-attention");
+    document.body.style.overflow = "hidden";
+  });
+
+  closeBtn?.addEventListener("click", () => {
+    modal?.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+
+  modal?.addEventListener("click", (e) => {
+    if (e.target === modal || e.target.classList.contains("modal-overlay")) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Cerrar con ESC
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal?.classList.contains("active")) {
+      modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+
+  // Ocultar las animaciones de atención después de 10 segundos
+  setTimeout(() => {
+    locationBtn?.classList.add("hide-attention");
+  }, 10000);
+</script>
